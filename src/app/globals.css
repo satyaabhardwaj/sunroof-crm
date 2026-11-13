@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  color-scheme: light;
+}
+body {
+  margin: 0;
+  background: #f6f5fa;
+  color: #242332;
+  font-family: Arial, Helvetica, sans-serif;
+}
+input,
+select {
+  border: 1px solid #dddde7;
+  border-radius: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  background: white;
+}
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 2px solid #514380;
+  outline-offset: 3px;
+}
+
+#workflow-root .body {
+  display: block;
+  padding: 0;
+}
+#workflow-root .main {
+  min-width: 0;
+  width: 100%;
+  padding: 0;
+}
+#workflow-root .stagebar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+#workflow-root .stagebar button {
+  padding: 10px;
+}
+#workflow-root .stagebar button.on {
+  border-bottom: 2px solid #514380;
+}
+#workflow-root .workflow-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0 20px;
+}
+#workflow-root .workflow-nav button {
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+#workflow-root .workflow-nav button[aria-current] {
+  background: #e9e8f8;
+  color: #514380;
+}
+#workflow-root .sun-phone-navigation {
+  display: none;
+}
+#workflow-root .sun-has-sidebar {
+  padding-left: 0;
+}
+.a-dialog {
+  max-width: min(1100px, 95vw);
+  max-height: 90dvh;
+  border: 1px solid #dddde7;
+  border-radius: 18px;
+  padding: 0;
+}
+.a-dialog::backdrop {
+  background: #25243866;
+}
+.a-dialog .sheet-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.a-dialog .sheet-b {
+  padding: 20px;
+  overflow: auto;
+}

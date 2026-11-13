@@ -48,3 +48,8 @@ backend/web/assets/
 
 # Local Claude Code settings
 .claude/
+
+# Next.js build and local TypeScript cache
+.next/
+out/
+*.tsbuildinfo

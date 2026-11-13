@@ -1,7 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "fastapi",
+  "framework": "nextjs",
   "buildCommand": "npm run build",
-  "git": { "deploymentEnabled": false },
-  "functions": { "backend/server.py": { "maxDuration": 300 } }
+  "git": {
+    "deploymentEnabled": false
+  }
 }

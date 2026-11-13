@@ -1,0 +1,1 @@
+Kanban transitions will use @dnd-kit/core and @dnd-kit/sortable. Drag-and-drop is not enabled until the backend exposes allowed, role-checked transitions. A visual move must never bypass Accounts, drawing approval or QC gates.

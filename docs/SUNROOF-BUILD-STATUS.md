@@ -1,3 +1,5 @@
+> Frontend structure update — 13 November 2026: the active frontend is now the root Next.js `src/` application. Separate `<department>/react` entries have been retired and their SUNROOOF screens migrated to `src/components/deals/workflow`. The prior runtime checks below describe the earlier demo, not verified Clerk/backend integration. See [NEXT-FRONTEND.md](NEXT-FRONTEND.md) for the current setup and limits.
+
 # Sunrooof CRM build status
 
 Updated 13 November 2026. Departmental demo increment. Local only; not a completed production rollout.

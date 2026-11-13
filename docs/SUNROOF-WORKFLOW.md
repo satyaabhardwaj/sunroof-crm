@@ -2,13 +2,17 @@
 
 Updated 13 November 2026. This is the meeting record and implementation checklist. Confirmed requirements are not claims of completed features.
 
+## Latest meeting review
+
+The three new transcripts and whiteboard supplied on 13 November are reconciled in [SUNROOOF-MEETING-UPDATES-2026-11-13.md](SUNROOOF-MEETING-UPDATES-2026-11-13.md). The numbered workflow below records the earlier agreed baseline, not blanket confirmation of conflicting new proposals. Designer-created areas/sub-orders under an existing project are now confirmed. Their hierarchy, independent dispatch rules and the final shipping scope still await clarification. Measurement staff should no longer see financial data. Preserve booking arrears against their original milestone while including them in cumulative dues. No runtime changes were made by this documentation review.
+
 ## Scope
 
-Retain the React and FastAPI architecture and evolve the UI in this separate Sunrooof project. No new opportunities or new orders are created here. Existing booked orders arrive from the agreed Sales/Zoho source. Each person has a separate departmental dashboard connected to the shared order. Scope starts at post-design and ends at cleared for dispatch: production, QC, packing and Accounts confirmation of dispatch-stage dues. Actual shipping and installation are later phases. Preserve the original Magppie project.
+Retain the React and FastAPI architecture and evolve the UI in this separate Sunrooof project. New standalone projects/opportunities are not created here; existing booked orders arrive from the agreed Sales/Zoho source. Confirmed on 13 November: designers may add additional areas/sub-orders under an existing project. Their hierarchy, creation cutoff and commercial approval rules remain to be settled. Each person has a separate departmental dashboard connected to the shared order. Scope starts at post-design and ends at cleared for dispatch: production, QC, packing and Accounts confirmation of dispatch-stage dues. Actual shipping and installation are later phases. Preserve the original Magppie project.
 
 Visual direction: approximately 45% powder blue (#8DB9F0), 45% soft lavender-white (#E9E8F8), 10% warm peach (#F5B69E). Use clear typography, generous spacing, restrained motion, accessible controls and responsive layouts. Ratios are a visual balance, not a pixel constraint. Apple-inspired restraint is the primary direction. Bento layout and Swiss typography provide structure; glass, neumorphism, skeuomorphism, Art Nouveau curves, liquid chrome and De Stijl are subtle influences only, never competing decoration.
 
-## Confirmed workflow
+## Earlier agreed workflow (read with latest meeting review)
 
 1. CRM assigns a designer using location, workload and square feet relative to pay-grade capacity. Shivang is Design Head; he can assign/reassign manually and configure capacity. Exact capacity calculation is deferred.
 2. Designer chooses an available person and slot from a location-aware calendar. Slots cannot overlap for one person. Measurement Executive bookings are directly confirmed; that executive cannot accept, reject or reschedule. Installation Managers contact the client and can accept/set time, reschedule or reject. Rejection returns to the designer.
