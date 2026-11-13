@@ -246,8 +246,7 @@ export function Tracker({ ctx }: { ctx: Context }) {
         <div>
           <h1>Client tracker</h1>
           <p>
-            Where each client is, who has them, what is paid and what date is
-            next · Offer basic value{" "}
+            Offer basic value{" "}
             {window.Kit.short(rows.reduce((n, c) => n + L.totals(c).base, 0))} ·
             amounts in ₹ lakh
           </p>

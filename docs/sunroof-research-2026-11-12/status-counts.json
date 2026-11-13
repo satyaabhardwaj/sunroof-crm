@@ -1,0 +1,192 @@
+[
+  {
+    "module": "Orders",
+    "count": 2117,
+    "more_records": false,
+    "error": null,
+    "statuses": {
+      "Order_Status": {
+        "Designer Assigned": 30,
+        "None": 1213,
+        "Align Measurement": 16,
+        "Measurement Done": 11,
+        "Production Drawing Discussion": 48,
+        "Rafter Installed": 139,
+        "Handover to Factory": 25,
+        "Payment Confirmed": 2,
+        "Request Console Dispatch": 69,
+        "Production Started": 36,
+        "Rafter Dispatched": 114,
+        "Production Drawing in Process": 13,
+        "Rafter Payment Confirmed": 5,
+        "Request Rafter Dispatch": 39,
+        "Produced": 49,
+        "On Hold": 35,
+        "Installation in Progress": 12,
+        "Consoles Received": 28,
+        "Full Production": 3,
+        "Uploaded Rafter E-Way Bill": 2,
+        "Console Dispatched": 19,
+        "Request for Rafter E-Way Bill": 23,
+        "Final QC": 42,
+        "Remote Handover": 86,
+        "Consoles Dispatched": 8,
+        "Rafter Received": 13,
+        "Console Payment Confirmed": 1,
+        "Request for Console E-way Bill": 11,
+        "Consoles Installed": 6,
+        "Rafter Installation In-progress": 3,
+        "Console Installation In-Progress": 3,
+        "Handover to Production": 1,
+        "Refund": 1,
+        "Received Site Images": 2,
+        "Cancelled": 3,
+        "Production Drawing Revision": 2,
+        "Testimonial Recieved": 1,
+        "Rafter Installation Started": 1,
+        "Pending from SM": 2
+      },
+      "Order_Status1": {
+        "None": 2114,
+        "Active": 3
+      },
+      "Production_Drawing_Status": {
+        "None": 2117
+      },
+      "Production_Status": {
+        "None": 2117
+      },
+      "Order_Type": {
+        "Full": 1622,
+        "None": 495
+      }
+    },
+    "latest_modified": "2026-11-12T19:29:36+05:30"
+  },
+  {
+    "module": "Orders_V2",
+    "count": 1448,
+    "more_records": false,
+    "error": null,
+    "statuses": {
+      "Order_Status": {
+        "None": 1448
+      },
+      "Order_Status1": {
+        "None": 9,
+        "Active": 1439
+      },
+      "Production_Drawing_Status": {
+        "None": 1448
+      },
+      "Production_Status": {
+        "None": 1448
+      },
+      "Order_Type": {
+        "Full": 1037,
+        "None": 411
+      },
+      "Post_Sheet_Stage": {
+        "None": 945,
+        "Handover": 199,
+        "Dead": 1,
+        "Rafters-Installed": 116,
+        "Site not Ready | Hold": 9,
+        "Consoles-Dispatched": 16,
+        "Production": 53,
+        "Rafters-Dispatched": 51,
+        "Consoles-Installed": 10,
+        "Production Drawing": 28,
+        "Align Measurement": 4,
+        "Pre to Post Pending": 15,
+        "Refund": 1
+      },
+      "Order_Stage_Main": {
+        "Request Rafter Dispatch": 8,
+        "Handover to Factory": 26,
+        "Align Measurement": 3,
+        "Production Drawing in Process": 11,
+        "None": 980,
+        "Handover": 7,
+        "Produced": 40,
+        "Final QC": 21,
+        "Rafter Installed": 108,
+        "Request Console Dispatch": 13,
+        "Remote Handover": 46,
+        "Designer Assigned": 8,
+        "Request for Rafter E-Way Bill": 11,
+        "Rafter Dispatched": 33,
+        "Consoles Received": 9,
+        "Production Started": 22,
+        "Handover to Production": 3,
+        "Production Drawing Discussion": 15,
+        "Rafter Payment Confirmed": 17,
+        "Site Not Ready": 1,
+        "Request for Console E-way Bill": 3,
+        "Rafter Received": 12,
+        "Console Installation In-Progress": 3,
+        "Consoles Installed": 4,
+        "Console Dispatched": 1,
+        "Consoles Dispatched": 1,
+        "Installation in Progress": 4,
+        "On Hold": 14,
+        "Full Production": 1,
+        "Planning Stage": 8,
+        "Rafters Installaed": 2,
+        "Pending Rafter Payment": 1,
+        "Refund": 3,
+        "Uploaded Rafter E-Way Bill": 2,
+        "Rafter Installation In-progress": 2,
+        "Received Site Images": 2,
+        "Cancelled": 1,
+        "Rafters Installed": 2
+      }
+    },
+    "latest_modified": "2026-11-05T17:39:52+05:30"
+  },
+  {
+    "module": "Sub_Orders",
+    "count": 488,
+    "more_records": false,
+    "error": null,
+    "statuses": {
+      "Status": {
+        "None": 488
+      },
+      "Production_Drawing_Status": {
+        "None": 488
+      }
+    },
+    "latest_modified": "2026-04-13T18:35:28+05:30"
+  },
+  {
+    "module": "Payment_Milestones",
+    "count": 9183,
+    "more_records": false,
+    "error": null,
+    "statuses": {
+      "Payment_Status": {
+        "Unpaid": 7774,
+        "Paid/Confirmed": 978,
+        "Discounted": 57,
+        "Partially Confirmed": 8,
+        "None": 34,
+        "Paid": 309,
+        "Partially Paid": 23
+      },
+      "PI_Approval_From_Accounts": {
+        "Pending": 921,
+        "None": 8260,
+        "Approved": 2
+      },
+      "Accounts_Approval_Status": {
+        "None": 8784,
+        "Approved With MD": 303,
+        "Rejected Without MD": 34,
+        "Rejected With MD": 6,
+        "Approved Without MD": 56
+      }
+    },
+    "latest_modified": "2026-11-12T19:28:03+05:30"
+  }
+]

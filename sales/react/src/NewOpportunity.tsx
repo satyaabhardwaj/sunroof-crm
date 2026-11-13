@@ -130,9 +130,6 @@ export function NewOpportunity({
       <div className="sheet-h">
         <div>
           <h2>New opportunity</h2>
-          <p className="sub">
-            Name, phone and source are enough to save. The rest can wait.
-          </p>
         </div>
       </div>
       <fieldset

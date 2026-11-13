@@ -1,0 +1,46 @@
+Transition ID,Action,Next stored status,Field API,Field label,Type,Mandatory flag,Optional flag
+887064000008985574,Pending Req. from SMs,Pending from SM,Pendency_from_SM,Pending from SM Explained,textarea,,False
+887064000008985574,Pending Req. from SMs,Pending from SM,Pending_from_SM,Pending from SM,picklist,,False
+887064000009107001,Assign Designer,Designer Assigned,Designer,Designer,userlookup,,False
+887064000009107001,Assign Designer,Designer Assigned,,Notes,notes,True,False
+887064000009107001,Assign Designer,Designer Assigned,Installation_Manager,Installation Manager,userlookup,,False
+887064000043495383,Order Cancel,Cancelled,,Notes,notes,True,False
+887064000026894410,Handover to Factory New,Handover to Factory,,[custom component],widget,True,
+887064000009107003,Align Measurement,Align Measurement,,[custom component],widget,True,
+887064000049690537,A M,Align Measurement,,[custom component],widget,True,
+887064000036581866,Planning Stage,Planning Stage,,[custom component],widget,True,
+887064000047364820,Add Payment Details Production,Pending Production Payment,,[custom component],widget,True,
+887064000047370556,Upload E-way Bill,Uploaded Rafter E-Way Bill,,Attachments,Attachment,True,False
+887064000047370556,Upload E-way Bill,Uploaded Rafter E-Way Bill,,Notes,notes,False,True
+887064000009107009,Measurement Dis-Approved,Align Measurement,,Notes,notes,True,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Transport_Name,Transport Name,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Transport_GST_Number,Transport GST Number,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Name,Billing Name,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Expected_Dispatch_Date,Expected  Dispatch Date,date,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address,Billing Address,textarea,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_Coordinates,Billing Address - Coordinates,textarea,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_Country_Region,Billing Address - Country / Region,picklist,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_Flat_House_No_Building_Apartment_N,Billing Address - Flat / House No./ Building / Apartment Name,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_Street_Address,Billing Address - Street Address,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_City,Billing Address - City,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_State_Province,Billing Address - State / Province,picklist,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_Zip_Postal_Code,Billing Address - Zip / Postal Code,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_Coordinates_Latitude,Billing Address - Latitude,double,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Billing_Address_Coordinates_Longitude,Billing Address - Longitude,double,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address,Shipping Address,textarea,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_Coordinates,Shipping Address - Coordinates,textarea,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_Country_Region,Shipping Address - Country / Region,picklist,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_Flat_House_No_Building_Apartment,Shipping Address - Flat / House No./ Building / Apartment Name,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_Street_Address,Shipping Address - Street Address,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_City,Shipping Address - City,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_State_Province,Shipping Address - State / Province,picklist,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_Zip_Postal_Code,Shipping Address - Zip / Postal Code,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_Coordinates_Latitude,Shipping Address - Latitude,double,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Shipping_Address_Coordinates_Longitude,Shipping Address - Longitude,double,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Vehicle_Type,Vehicle Type,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Vehicle_Number,Vehicle Number,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,FOC,FOC,text,,False
+887064000009107029,Request for Rafter E-Way Bill,Request for Rafter E-Way Bill,Product_Type,Product Type,picklist,,False
+887064000050171297,Move to handover to production,Handover to Factory,,[custom component],widget,True,
+887064000009107025,Production Started,Production Started,Expected_Dispatch_Date,Expected  Dispatch Date,date,,False
+887064000048248023,Add Payment Details Rafter,Pending Rafter Payment,,[custom component],widget,True,

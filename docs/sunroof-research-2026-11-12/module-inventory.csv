@@ -1,0 +1,186 @@
+API name,Label,API supported,Field count
+Home,Home,False,
+Workqueue__s,Workqueue,False,
+Leads,Leads,True,196
+Contacts,Contacts,True,79
+Accounts,Accounts,True,42
+Deals,Opportunities,True,270
+Activities,Activities,False,
+Orders,Orders,True,245
+Payment_Milestones,Payment Milestones,True,70
+Sub_Orders,Sub Orders,True,81
+Tasks,Tasks,True,21
+Events,Meetings,True,35
+Calls,Calls,True,45
+Reports,Reports,False,
+Analytics,Analytics,False,
+Products,Products,True,35
+Quotes,Quotes,True,68
+Sales_Orders,Sales Orders,True,44
+Purchase_Orders,Purchase Orders,True,42
+Invoices,Invoices,True,42
+SalesInbox,SalesInbox,False,
+Feeds,Feeds,False,
+Campaigns,Campaigns,True,38
+Vendors,Vendors,True,26
+Price_Books,Price Books,True,15
+Cases,Cases,True,30
+Quoted_Items,Quoted Items,True,15
+PDF_Files,Drawings in PDF,True,4
+Increase_Decrease_Scope,Increase/Decrease Scope,True,26
+Drawings_in_PDFs,Drawings in PDFs,True,4
+Product_Details,Product Details,True,17
+Call_Evaluation_Details,Call Evaluation Details,True,13
+Quotation_Items,Quotation Items,True,13
+Solutions,Solutions,True,20
+Email_Sentiment,EmailSentiment,False,
+Ordered_Items,Ordered Items,True,15
+Email_Analytics,Email Analytics,True,24
+Email_Template_Analytics,Email Template Analytics,True,14
+Product_Items,Product Items,True,17
+Product_Items1,Product Items.,True,11
+Product_Item,Product Item,True,16
+Marketing_Attribution,Marketing Attributions,True,12
+leadchain0__Lead_Chain,LeadChain,False,
+zohopagesensebeta__Session_Recordings,Session Recordings,True,31
+zohopagesensebeta__Goals,Goals,True,27
+Documents,Documents,False,
+DealHistory,Stage History,True,14
+Purchase_Items,Purchase Items,True,15
+Forecasts,Forecasts,False,
+Invoiced_Items,Invoiced Items,True,15
+Visits,Visits,True,35
+Social,Social,False,
+Approvals,My Jobs,True,0
+Google_AdWords,Google Ads,False,
+Notes,Notes,True,11
+Attachments,Attachments,True,10
+Emails,Emails,False,
+Check_Ins,Check Ins,False,
+Actions_Performed,Actions Performed,True,8
+Forecast_Quotas,Forecast Targets,False,
+Forecast_Items,Forecast Items,False,
+Forecast_Groups,Forecast Groups,False,
+messages__s,Messages,True,17
+Locking_Information__s,Locking Information,True,9
+Functions__s,Functions,True,27
+Email_Template__s,Email Templates,False,
+Payment_M_X_Sub_Orders,Payment MS X Sub Orders,True,16
+Desk,Desk,False,
+Projects,Projects,False,
+Lead_Status_History,Lead Status History,True,12
+LIFT_Dashboard,LIFT Dashboard,False,
+Whatsapp_Reports,Whatsapp Reports,False,
+Score_Card,Score Card,False,
+File_Upload_1__s,File Upload 1,True,10
+test,test,False,
+Update_PM_on_Sub_Orders2,Update PM on SubOrders MD - Published,False,
+File_Upload_2__s,Measurement,True,10
+File_Upload_3__s,Measurement,True,10
+Scoring_Rules__s,Scoring Rules,True,3
+Entity_Scores__s,Entity Scores,True,9
+Update_PM_on_SubOrder_OP,Update PM on SubOrder OP - Inactive,False,
+Voice_of_the_Customer__s,Voice of the Customer,False,
+VocResources,VoC Resources,True,13
+VocResponses_Leads,VoC Responses Leads,True,30
+VocAnswers_Leads,VoC Answers Leads,True,10
+VocEvents_Leads,VoC Events Leads,True,7
+VocInferences_Leads,VoC Keywords Leads,True,12
+VocResponses_Contacts,VoC Responses Contacts,True,31
+VocAnswers_Contacts,VoC Answers Contacts,True,11
+VocEvents_Contacts,VoC Events Contacts,True,7
+VocInferences_Contacts,VoC Keywords Contacts,True,12
+File_Upload_4__s,Upload Measurement,True,10
+Upload_Measurement1,Upload Measurement - Inactive,False,
+File_Upload_5__s,Upload Measurement,True,10
+Upload_Measurement2,Upload Measurement - Published,False,
+File_Upload_6__s,Upload Measurement,True,10
+Update_PM_Orders_OP2,Update PM - Orders OP - Inactive,False,
+Update_PM_on_SubOrder_OP1,Update PM on SubOrder OP - Published,False,
+File_Upload_7__s,Call Transcription,True,10
+File_Upload_8__s,Upload GST Certificate,True,10
+File_Upload_9__s,Upload Order Closure Form,True,10
+File_Upload_10__s,Upload Purchase Order,True,10
+Update_PM_on_Opp_New,Update PM on Opp. New,False,
+Email_Drafts__s,Email Drafts,False,
+Order_Status_History,Order Status History,True,10
+VocResponses_VocAnonymous,VoC Responses VocAnonymous,True,27
+VocAnswers_VocAnonymous,VoC Answers VocAnonymous,True,9
+VocEvents_VocAnonymous,VoC Events VocAnonymous,True,6
+VocInferences_VocAnonymous,VoC Keywords VocAnonymous,True,11
+File_Upload_11__s,GST Certificate,True,10
+File_Upload_12__s,Upload Order Closure Form,True,10
+File_Upload_13__s,Upload Order Closure Form,True,10
+Image_Upload_1__s,Payment Receipt.,True,14
+CalendarBookings__s,Calendar Bookings,False,
+Unknown__s,Unknown,False,
+Services__s,Services,True,27
+Appointments__s,Appointments,True,33
+Services_X_Users__s,Services X Users,True,10
+Appointments_Rescheduled_History__s,Appointments Rescheduled History,True,13
+Quotes_X_Payment_M,Quotes X Payment M,True,16
+WhatsappChatsbyEazybe,Whatsapp Chats by EazyBe,True,42
+Image_Upload_2__s,Image Word,True,14
+Upload_Site_Images,Upload Site Images,False,
+Testing,Testing,False,
+Update_PM_on_SubOrders_MD1,Update PM on SubOrders MD,False,
+Update_PM_Orders_OP,Update PM - Orders OP - Published,False,
+PI_Approval_From_Accounts_History,PI Approval From Accounts History,True,20
+Update_PM_on_Opportunity1,Update PM on Opportunity - Published,False,
+Sales_Dashboard,Sales Dashboard,False,
+j,j,False,
+File_Upload_14__s,Upload Site Video,True,10
+Image_Upload_3__s,Upload Site Images,True,14
+File_Upload_15__s,PDF,True,10
+File_Upload_16__s,Autocad,True,10
+File_Upload_17__s,Approval Screen Shot,True,10
+File_Upload_18__s,File Upload,True,10
+Update_PM_Orders_MD2,Update PM - Orders MD - Inactive,False,
+Update_PM_Orders_MD,Update PM - Orders MD - Published,False,
+File_Upload_19__s,File Upload,True,10
+kiosk_pinki,kiosk pinki - Published,False,
+File_Upload_20__s,Autocad,True,10
+File_Upload_21__s,PDF,True,10
+File_Upload_22__s,Approval Ss,True,10
+File_Upload_23__s,PDF,True,10
+File_Upload_24__s,Autocad,True,10
+File_Upload_25__s,Approval Ss,True,10
+File_Upload_26__s,PDFs,True,10
+File_Upload_27__s,PDF2,True,10
+File_Upload_28__s,PDF,True,10
+Analytics_Cache,Analytics Cache,True,21
+Update_PM_on_Opportunity,Update PM on Opportunity,False,
+File_Upload_29__s,CT Text Highlight,True,10
+Incentive_Matrix,Incentive Matrix,True,20
+Leads_Qualities,Leads Qualities,True,67
+VocInferenceRelations_Leads,Voc Inferences Relation Leads,True,3
+VocInferenceRelations_Contacts,Voc Inferences Relation Contacts,True,3
+VocInferenceRelations_VocAnonymous,Voc Inferences Relation VocAnonymous,True,3
+Orders_V2,Orders V2,True,288
+File_Upload_30__s,Measurement,True,10
+File_Upload_31__s,Upload Order Closure Form,True,10
+File_Upload_32__s,Upload Site Video,True,10
+Image_Upload_4__s,Upload Site Images,True,14
+File_Upload_33__s,File Upload,True,10
+File_Upload_34__s,PDF,True,10
+File_Upload_35__s,Autocad,True,10
+File_Upload_36__s,Approval Ss,True,10
+File_Upload_37__s,PDF2,True,10
+File_Upload_38__s,PDF,True,10
+Quote_Stage_History,Quote Stage History,True,16
+Slot_Modules,Slot Modules,True,24
+File_Upload_39__s,Dispatch Slip,True,10
+Quotations,Quotations,True,69
+Quotes_Stage_History,Quotes Stage History,True,14
+File_Upload_40__s,Dispatch Slip,True,10
+Orders_V2_Status_History,Orders V2 Status History,True,10
+Image_Upload_5__s,Image Word,True,14
+File_Upload_41__s,PDFs,True,10
+Sunroof_Attendance,Roster Tracker,True,62
+Ozonetel_Call_Jobs,Ozonetel Call Jobs,True,20
+SUNROOOF_WhatsApp,SUNROOOF WhatsApp,False,
+File_Upload_42__s,Upload Layout,True,10
+Image_Upload_6__s,Upload Site Images,True,14
+Reaction_Configuration__s,ReactionConfigurations,False,
+Qualification_Rooms,Qualification Rooms,True,40
+SUNROOOF_Prospect,SUNROOOF Prospect,False,

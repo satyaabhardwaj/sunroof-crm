@@ -7,6 +7,9 @@ import {
   acceptLead,
   approveDesign,
   askSpecialMeasurement,
+  askCustomPlan,
+  decideCustomPlan,
+  setCustomPlan,
   decideSpecialMeasurement,
   fillFromEstimate,
   disqualify,
@@ -455,4 +458,30 @@ it("requires an email and a confirmed signature id without marking an uncertain 
   await expect(signRequest("/api/sign/send", {})).rejects.toThrow(
     "not configured",
   );
+});
+
+it("custom payment plan: 100% stages, sent to the AVP, used only once approved", () => {
+  const c = client();
+  c.payment.plan = "Custom";
+  setCustomPlan(c, [
+    ["Booking", 40],
+    ["Production", 40],
+  ]);
+  expect(() => askCustomPlan(c, "Client asked")).toThrow("100%");
+  setCustomPlan(c, [
+    ["Booking", 40],
+    ["Production", 40],
+    ["PDI", 20],
+  ]);
+  expect(() => askCustomPlan(c, " ")).toThrow("why");
+  askCustomPlan(c, "Client asked");
+  expect(rules().customPlanOk(c)).toBe(false);
+  decideCustomPlan(c, true, "Synthetic AVP", "");
+  expect(rules().customPlanOk(c)).toBe(true);
+  expect(
+    rules()
+      .shares(c)
+      .map((s) => s.percent),
+  ).toEqual([40, 40, 20]);
+  expect(c.approvals.plan).toBe("Approved");
 });

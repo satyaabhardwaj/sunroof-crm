@@ -147,6 +147,8 @@ export function requestPayment(
 export function submitBooking(c: SalesClient) {
   if (!rules().totals(c).total || !c.timeline.handover)
     throw Error("Fill the order value and handover date first.");
+  if (!rules().customPlanOk(c))
+    throw Error("The custom payment plan needs Tavneet's approval first.");
   c.submittedAt = now();
   if (["Not sent", "Rejected"].includes(c.approvals.booking))
     c.approvals.booking = "Pending";
@@ -213,6 +215,56 @@ export function decideSpecialMeasurement(
       " by " +
       by +
       ": first site measurement" +
+      (note ? " · " + note : ""),
+    approve ? "green" : "red",
+  );
+}
+
+// Custom payment plan (Manish, 26 Oct 2026): Sales sets the stages, the AVP (Tavneet) approves them.
+// Any change after a decision sends it back to Draft, so what was approved is what is used.
+export function setCustomPlan(c: SalesClient, shares: [string, number][]) {
+  c.payment.custom = { shares, status: "Draft" };
+}
+export function askCustomPlan(c: SalesClient, reason: string) {
+  const k = c.payment.custom;
+  const total = (k?.shares || []).reduce((n, s) => n + (Number(s[1]) || 0), 0);
+  if (!k?.shares.length || total !== 100)
+    throw Error("The stages must add up to 100% (now " + total + "%).");
+  if (k.shares.some((s) => !s[0].trim() || !(Number(s[1]) > 0)))
+    throw Error("Every stage needs a name and a %.");
+  if (!reason.trim()) throw Error("Write why the client needs this plan.");
+  c.payment.custom = {
+    shares: k.shares,
+    status: "Pending",
+    reason: reason.trim(),
+    requestedAt: now(),
+  };
+  c.approvals.plan = "Pending";
+  news(
+    c,
+    "Custom payment plan sent to Tavneet: " +
+      k.shares.map((s) => s[0] + " " + s[1] + "%").join(" / "),
+  );
+}
+export function decideCustomPlan(
+  c: SalesClient,
+  approve: boolean,
+  by: string,
+  note: string,
+) {
+  const k = c.payment.custom;
+  if (!k || k.status !== "Pending") throw Error("Nothing is waiting for approval.");
+  k.status = approve ? "Approved" : "Rejected";
+  k.decidedAt = now();
+  k.decidedBy = by;
+  k.note = note;
+  c.approvals.plan = k.status;
+  news(
+    c,
+    "Custom payment plan " +
+      (approve ? "approved" : "refused") +
+      " by " +
+      by +
       (note ? " · " + note : ""),
     approve ? "green" : "red",
   );

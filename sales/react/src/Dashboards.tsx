@@ -5,6 +5,7 @@ import { Button, Card, day, Field, money, Pill, Select } from "./ui";
 import { ClientList, FollowUps, Grid, stageNames } from "./lists";
 import { ArchitectPage, TeamPage } from "./MasterPages";
 import { Tracker } from "./Tracker";
+import { decideCustomPlan, decideSpecialMeasurement } from "./commands";
 export const steps: Record<string, [string, string, string]> = {
   drf: ["Send DRF to Design", "grey", "You"],
   withDesign: ["Pending with designer", "blue", "Design"],
@@ -251,6 +252,147 @@ export function approvalRows(list: SalesClient[]): Approval[] {
   }
   return out;
 }
+// Tavneet's approvals (Manish, 26 Oct 2026): the only two things the AVP approves, in one place.
+// Site: a first site measurement before the token. Payment plan: a custom plan. Everyone can see the list; only the
+// AVP login (or someone viewing as the AVP) gets Approve and Reject.
+function AvpApprovals({ ctx }: { ctx: Context }) {
+  const [notes, setNotes] = useState<Record<string, string>>({}),
+    [error, setError] = useState("");
+  const me = window.People.list[0],
+    avp = window.People.list.find((p) => p.role === "AVP"),
+    canDecide = me?.role === "AVP" && !ctx.readOnly;
+  const rows = clients(ctx.everyone)
+    .filter((c) => !["bin", "lost"].includes(c.stage))
+    .flatMap((c) => {
+      const out: {
+        c: SalesClient;
+        kind: "site" | "plan";
+        what: string;
+        why: string;
+        at: string;
+        status: string;
+        by?: string;
+      }[] = [];
+      const s = c.special?.siteMeasurement;
+      if (s)
+        out.push({
+          c,
+          kind: "site",
+          what:
+            "Site measurement before the token" +
+            (s.date ? " · for " + day(s.date) : ""),
+          why: s.reason || "",
+          at: s.requestedAt,
+          status: s.status,
+          by: s.decidedBy,
+        });
+      const k = c.payment.custom;
+      if (k && k.status !== "Draft")
+        out.push({
+          c,
+          kind: "plan",
+          what:
+            "Payment plan · " +
+            k.shares.map((x) => x[0] + " " + x[1] + "%").join(" / "),
+          why: k.reason || "",
+          at: k.requestedAt || "",
+          status: k.status,
+          by: k.decidedBy,
+        });
+      return out;
+    })
+    .sort((a, b) => b.at.localeCompare(a.at));
+  const decide = (r: (typeof rows)[number], yes: boolean) => {
+    try {
+      setError("");
+      const note = notes[r.c.id + r.kind] || "";
+      ctx.update(() =>
+        r.kind === "site"
+          ? decideSpecialMeasurement(r.c, yes, me.name, note)
+          : decideCustomPlan(r.c, yes, me.name, note),
+      );
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+  const pending = rows.filter((r) => r.status === "Pending");
+  return (
+    <div className="page">
+      <div className="page-h">
+        <div>
+          <h1>{avp ? avp.name + "\u2019s approvals" : "AVP approvals"}</h1>
+        </div>
+      </div>
+      {error && (
+        <p role="alert" className="msg">
+          {error}
+        </p>
+      )}
+      <Grid
+        title={"Waiting · " + pending.length}
+        heads={["Client", "What", "Why", "Asked on", ""]}
+        cols="1.3fr 2fr 1.6fr .8fr 2.2fr"
+        empty="Nothing is waiting."
+        rows={pending.map((r) => ({
+          id: r.c.id + r.kind,
+          cells: [
+            <b onClick={() => ctx.open(r.c)} style={{ cursor: "pointer" }}>
+              {r.c.name} <small>{r.c.pid}</small>
+            </b>,
+            r.what,
+            r.why,
+            r.at ? day(r.at) : "",
+            canDecide ? (
+              <span className="flexrow">
+                <input
+                  aria-label="Note"
+                  placeholder="Note"
+                  value={notes[r.c.id + r.kind] || ""}
+                  onChange={(e) =>
+                    setNotes((n) => ({
+                      ...n,
+                      [r.c.id + r.kind]: e.target.value,
+                    }))
+                  }
+                />
+                <Button tone="dark" onClick={() => decide(r, true)}>
+                  Approve
+                </Button>
+                <Button tone="warn" onClick={() => decide(r, false)}>
+                  Reject
+                </Button>
+              </span>
+            ) : (
+              <span className="sub">With {avp?.name || "the AVP"}</span>
+            ),
+          ],
+        }))}
+      />
+      <Grid
+        title="Decided"
+        heads={["Client", "What", "Answer", "By"]}
+        cols="1.3fr 2.6fr 1fr 1.2fr"
+        empty="Nothing decided yet."
+        rows={rows
+          .filter((r) => r.status !== "Pending")
+          .map((r) => ({
+            id: r.c.id + r.kind + "d",
+            onClick: () => ctx.open(r.c),
+            cells: [
+              <b>
+                {r.c.name} <small>{r.c.pid}</small>
+              </b>,
+              r.what,
+              <Pill tone={r.status === "Approved" ? "green" : "red"}>
+                {r.status}
+              </Pill>,
+              r.by || "",
+            ],
+          }))}
+      />
+    </div>
+  );
+}
 function Approvals({ ctx }: { ctx: Context }) {
   const [status, setStatus] = useState("Pending"),
     [who, setWho] = useState("");
@@ -260,7 +402,6 @@ function Approvals({ ctx }: { ctx: Context }) {
       <div className="page-h">
         <div>
           <h1>Sent for approvals</h1>
-          <p>Everything you have sent for a yes, and what came back</p>
         </div>
         <Select
           label="Sent to"
@@ -399,8 +540,7 @@ function Payments({ ctx }: { ctx: Context }) {
         <div>
           <h1>Payments</h1>
           <p>
-            What you still have to collect, by due date · {short(sum(all))} from{" "}
-            {all.length} clients
+            {short(sum(all))} from {all.length} clients
           </p>
         </div>
         <Select
@@ -515,7 +655,6 @@ function Incentive({ ctx }: { ctx: Context }) {
       <div className="page-h">
         <div>
           <h1>Incentive</h1>
-          <p>For the person chosen in "Viewing" at the top</p>
         </div>
       </div>
       <div className="inc-grid">
@@ -571,9 +710,6 @@ function Bin({ ctx }: { ctx: Context }) {
       <div className="page-h">
         <div>
           <h1>Bin</h1>
-          <p>
-            Nothing here is lost. Restore puts it back exactly where it was.
-          </p>
         </div>
         {deleted.length + calls.length > 0 && (
           <Button
@@ -658,6 +794,13 @@ export const routes = [
     page: true,
     flow: true,
     Component: Approvals,
+  },
+  {
+    id: "avp",
+    title: "Tavneet\u2019s approvals",
+    short: "AVP",
+    page: true,
+    Component: AvpApprovals,
   },
   {
     id: "team",

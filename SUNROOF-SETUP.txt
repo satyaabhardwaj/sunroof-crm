@@ -1,0 +1,21 @@
+SUNROOF CRM — starting copy
+
+Created 12 November 2026 from the current Magppie CRM working files, including local edits.
+Source: /Users/magppie/Documents/PROJECT FINAL/CRM-CLAUDE
+
+Agreed scope:
+- Keep the existing backend architecture and UI/UX as the starting point.
+- Sunroof workflow begins at Post-design.
+- Wait for the complete workflow conversation, analyse it and discuss it with the user before implementing workflow changes.
+- Make Sunroof changes in this folder.
+
+Copy status:
+- Application source and configuration templates copied and verified byte-for-byte.
+- Initial Sunroof intake workspace and branding implemented on 13 November 2026. See docs/SUNROOF-BUILD-STATUS.md for exact completion and remaining work.
+- Magppie credentials, client records, uploads, local runtime state, dependencies and deployment links were not copied.
+- No live database was created or connected and nothing is deployed. A separate disposable SQLite QA database and loopback server were used for verification.
+- Before running, configure a separate Sunroof database/storage, credentials, local project identifiers and ports; copied defaults still describe Magppie.
+- Authentication and Design dependencies installed and those frontends built. Other inherited modules remain unconverted.
+- Existing Magppie documentation describes the inherited implementation, not the final Sunroof requirements.
+
+13 November correction: the central intake UI was replaced by five interconnected departmental workspaces. No new opportunity/order screen remains. See docs/SUNROOF-BUILD-STATUS.md and docs/SUNROOOF-DEMO-GUIDE.md. Official brand spelling: Sunrooof.

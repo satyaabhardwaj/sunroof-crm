@@ -1,0 +1,784 @@
+Blueprint,Blueprint ID,Module internal name,Status,From state,Action,To state,Transition ID
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Open,Open,887064000000394001
+Lead Status Wise,887064000000394025,Leads,Active,Open,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Raw,Raw,887064000000394011
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Magppie,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Prospect,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Magppie,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Open,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Future Prospect,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Future Prospect,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Prospect,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Future Prospect,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Open,Open,887064000000394001
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Open,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Magppie,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Open,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Prospect,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Open,Open,887064000000394001
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Open,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Prospect,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Magppie,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Future Prospect,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Open,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Open,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Open,Open,887064000000394001
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Open,Open,887064000000394001
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Magppie,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Future Prospect,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Handled by WS,Handled by SM,887064000036985667
+Lead Status Wise,887064000000394025,Leads,Active,Prospect,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Prospect,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Magppie,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Future Prospect,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Raw,Raw,887064000000394011
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Open,Open,887064000000394001
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Raw,Raw,887064000000394011
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Junk Lead,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Open,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Handled by SM,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Priority Prospect,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Future Prospect,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,-None-,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Magppie,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Not Interested,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Prospect,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Raw,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Non-Serviceable,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Open,as,Raw,887064000054161261
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Open,Open,887064000000394001
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Prospect,Prospect,887064000000394003
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Raw,Raw,887064000000394011
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Not Interested,Not Interested,887064000000394103
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Future Prospect,Future Prospect,887064000000583089
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Magppie,Magppie,887064000000583091
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Non - Serviceable,Non-Serviceable,887064000014251161
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Priority Prospect,Priority Prospect,887064000036985570
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Junk Lead,Junk Lead,887064000053058805
+Lead Status Wise,887064000000394025,Leads,Active,Converted,Test Prospect,Raw,887064000036575661
+Lead Status Wise,887064000000394025,Leads,Active,Open,Qualify Lead,Converted,887064000059439075
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Open,Open,887064000059986476
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Raw,Raw,887064000059986478
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Magppie,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Prospect,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Magppie,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Future Prospect,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Future Prospect,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Prospect,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Future Prospect,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Open,Open,887064000059986476
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Magppie,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Prospect,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Open,Open,887064000059986476
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Prospect,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Magppie,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Future Prospect,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Open,Open,887064000059986476
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Open,Open,887064000059986476
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Magppie,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Future Prospect,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Handled by WS,Handled by SM,887064000059986485
+Lead Status Wise,887064000059986474,Leads,Draft,Prospect,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Prospect,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Magppie,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Future Prospect,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Raw,Raw,887064000059986478
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Open,Open,887064000059986476
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Raw,Raw,887064000059986478
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Junk Lead,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Handled by SM,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Priority Prospect,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Future Prospect,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,-None-,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Magppie,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Not Interested,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Prospect,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Raw,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Non-Serviceable,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Open,as,Raw,887064000059986487
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Open,Open,887064000059986476
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Prospect,Prospect,887064000059986477
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Raw,Raw,887064000059986478
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Not Interested,Not Interested,887064000059986479
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Future Prospect,Future Prospect,887064000059986480
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Magppie,Magppie,887064000059986481
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Non - Serviceable,Non-Serviceable,887064000059986482
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Priority Prospect,Priority Prospect,887064000059986484
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Junk Lead,Junk Lead,887064000059986486
+Lead Status Wise,887064000059986474,Leads,Draft,Converted,Test Prospect,Raw,887064000059986483
+Lead Status Wise,887064000059986474,Leads,Draft,Open,Qualify Lead,Converted,887064000059986488
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,Raw Quote,Raw Quote,887064000000501236
+Deal Stage Wise,887064000000501270,Potentials,Active,Design Discussion,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Price Discussion,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Closure,Closure,887064000000501248
+Deal Stage Wise,887064000000501270,Potentials,Active,Design Discussion,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Ringing No Response,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Call Back Later,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Price Discussion,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Call Back Later,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Design Discussion,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Price Discussion,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Design Discussion,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Price Discussion,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Design Discussion,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Call Back Later,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Ringing No Response,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Call Back Later,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Ringing No Response,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Stalled,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Stalled,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Stalled,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Stalled,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Stalled,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Stalled,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Closure,Pending From SM,Pending From SM,887064000017529295
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Completed From SM,Closure,887064000017529298
+Deal Stage Wise,887064000000501270,Potentials,Active,Price Discussion,New Payment Awaited,Payment Awaited,887064000022928477
+Deal Stage Wise,887064000000501270,Potentials,Active,Closure,Received Remaining Amount,Closure,887064000023758981
+Deal Stage Wise,887064000000501270,Potentials,Active,Closure,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Call Back Later,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Design Discussion,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Price Discussion,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Reverse,Drawings Received,887064000026853306
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Approve/Revise Quote,Approved/Revised Quote,887064000027429051
+Deal Stage Wise,887064000000501270,Potentials,Active,Not Interested,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Raw Quote,Raw Quote,887064000000501236
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,Priority Prospect,Priority Prospect.,887064000037071514
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Handled By WS,Handled By SM.,887064000037071541
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Sent to Approval,Raw Quote,887064000038712494
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Raw Quote,Raw Quote,887064000000501236
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Dis-Qualified Quote,Dis-Qualified Quote,887064000040413063
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Closure,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Not Interested,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Ringing No Response,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Dis-Qualified Quote,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Handled By SM.,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Priority Prospect.,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Pending From SM,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Closure,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Not Interested,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Price Discussion,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Design Discussion,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Call Back Later,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Ringing No Response,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Stalled,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,Test Order V2,Closure,887064000045832053
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Raw Quote,Raw Quote,887064000000501236
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Raw Quote,Raw Quote,887064000000501236
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Validate Quote by WS,Validate Quote by SM,887064000047271028
+Deal Stage Wise,887064000000501270,Potentials,Active,Validate Quote by SM,Revision,Revised Quote,887064000047271036
+Deal Stage Wise,887064000000501270,Potentials,Active,Approved/Revised Quote,Sent for Approval,Created Quote,887064000047271180
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Revision,Revised Quote,887064000047271036
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Raw Quote,Raw Quote,887064000000501236
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Payment Awaited,ab,Closure,887064000048457869
+Deal Stage Wise,887064000000501270,Potentials,Active,Revised Quote,sd,Created Quote,887064000050681161
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Reverse12,Approved/Revised Quote,887064000051042090
+Deal Stage Wise,887064000000501270,Potentials,Active,Raw Quote,Test Reverse,Drawings Received,887064000053071760
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,test kajal,Created Quote,887064000055440862
+Deal Stage Wise,887064000000501270,Potentials,Active,Created Quote,Approve/Revise test,Approved/Revised Quote,887064000056230683
+Deal Stage Wise,887064000000501270,Potentials,Active,Drawings Received,abc,Created Quote,887064000058294640
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Raw Quote,Raw Quote,887064000000501236
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Price Discussion,Price Discussion,887064000000501242
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Payment Awaited,Payment Awaited,887064000000501244
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Not Interested,Not Interested,887064000000501250
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Design Discussion,Design Discussion,887064000000652006
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Ringing No Response,Ringing No Response,887064000000652008
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Call Back Later,Call Back Later,887064000000652010
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Stalled,Stalled,887064000002608507
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Request Quote,Created Quote,887064000025811050
+Deal Stage Wise,887064000000501270,Potentials,Active,Qualified Lead,Revision,Revised Quote,887064000047271036
+Order Status,887064000009107167,CustomModule2,Active,Upload E-Way Bill,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Ready for console Dispatch,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Upload E-way billl Console,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Consoles Received,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Console Installation Started,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Console Installation In-Progress,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Final QC,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installation Started,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Upload E-Way Bill,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Ready for console Dispatch,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Upload E-way billl Console,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Consoles Received,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Console Installation Started,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Console Installation In-Progress,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Final QC,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installation Started,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Upload E-Way Bill,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Ready for console Dispatch,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Upload E-way billl Console,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Consoles Received,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Console Installation Started,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Console Installation In-Progress,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Final QC,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installation Started,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Upload E-Way Bill,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Ready for console Dispatch,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Upload E-way billl Console,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Consoles Received,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Console Installation Started,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Console Installation In-Progress,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Final QC,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installation Started,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Upload E-Way Bill,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Ready for console Dispatch,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Upload E-way billl Console,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Consoles Received,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Console Installation Started,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Console Installation In-Progress,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Final QC,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installation Started,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Ready for Dispatch,Upload E-way Bill,Upload E-Way Bill,887064000047370556
+Order Status,887064000009107167,CustomModule2,Active,Ready for console Dispatch,Upload E-way bill,Upload E-way billl Console,887064000047370560
+Order Status,887064000009107167,CustomModule2,Active,Upload E-way billl Console,Console Dispatched,Console Dispatched,887064000047370558
+Order Status,887064000009107167,CustomModule2,Active,Console Dispatched,Consoles Received,Consoles Received,887064000047370562
+Order Status,887064000009107167,CustomModule2,Active,Consoles Received,Console Installation Started,Console Installation Started,887064000047370564
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,Console Installation In-Progress,Console Installation In-Progress,887064000047370566
+Order Status,887064000009107167,CustomModule2,Active,Automation,Final QC,Final QC,887064000047370568
+Order Status,887064000009107167,CustomModule2,Active,Missing and Damage,Rafter Installation In-progress,Start Rafter Process,887064000047370571
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,Handover to Factory New,Handover to Factory,887064000026894410
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Measurement Done,Assign to Pre-Designer,Assigned Pre-Design,887064000047602446
+Order Status,887064000009107167,CustomModule2,Active,Order in Full,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Order in Full,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Order in Full,Site Not Ready,Site Not Ready,887064000008985582
+Order Status,887064000009107167,CustomModule2,Active,Order in Full,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Assign Designer,Align Measurement,Align Measurement,887064000009107003
+Order Status,887064000009107167,CustomModule2,Active,Align Measurement,Measurement Done,Measurement Done,887064000009107007
+Order Status,887064000009107167,CustomModule2,Active,Measurement Done,Measurement Dis-Approved,Align Measurement,887064000009107009
+Order Status,887064000009107167,CustomModule2,Active,Measurement Done,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing in Process,Production Drawing Discussion,Production Drawing Discussion,887064000009107017
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,Refund,Refund,887064000009107021
+Order Status,887064000009107167,CustomModule2,Active,Planning Done,Production Started,Production Started,887064000009107025
+Order Status,887064000009107167,CustomModule2,Active,Dispatch Request,Request for Rafter E-Way Bill,Ready for Dispatch,887064000009107029
+Order Status,887064000009107167,CustomModule2,Active,Start Rafter Process,Rafter Installed,Rafter Installed,887064000009107037
+Order Status,887064000009107167,CustomModule2,Active,Console Installation In-Progress,Consoles Installed,Consoles Installed,887064000009107081
+Order Status,887064000009107167,CustomModule2,Active,Request Console Dispatch,Request for Console E-way Bill,Ready for console Dispatch,887064000009107085
+Order Status,887064000009107167,CustomModule2,Active,Final QC,Remote/App Handover,Remote Handover,887064000009107091
+Order Status,887064000009107167,CustomModule2,Active,Remote Handover,Received Site Images,Received Site Images,887064000009107095
+Order Status,887064000009107167,CustomModule2,Active,Received Site Images,Request for Customer Testimony,Request for Customer Testimony,887064000009107099
+Order Status,887064000009107167,CustomModule2,Active,Request for Customer Testimony,Testimonial Received,Testimonial Recieved,887064000009107103
+Order Status,887064000009107167,CustomModule2,Active,Consoles Installed,Automation Done,Automation,887064000009107281
+Order Status,887064000009107167,CustomModule2,Active,Rafter Dispatched,Rafter Received,Rafter Received,887064000009402156
+Order Status,887064000009107167,CustomModule2,Active,On Hold,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Site Not Ready,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Pending from SM,Req. completed,Order in Full,887064000009266045
+Order Status,887064000009107167,CustomModule2,Active,-None-,Full Production,Order in Full,887064000009425908
+Order Status,887064000009107167,CustomModule2,Active,-None-,Split Production,Order in Split,887064000009425910
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,Handover to Factory,Handover to Factory,887064000011660780
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,Drawings Revision,Production Drawing Revision,887064000012276094
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Revision,Drawings Discussion,Production Drawing Discussion,887064000012276096
+Order Status,887064000009107167,CustomModule2,Active,Assign Designer,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Upload E-Way Bill,Rafter Dispatched,Rafter Dispatched,887064000019961331
+Order Status,887064000009107167,CustomModule2,Active,Request Console Dispatch,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installed,Request For Console,Request Console Dispatch,887064000021540451
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,Handover to Factory New,Handover to Factory,887064000026894410
+Order Status,887064000009107167,CustomModule2,Active,Planning Done,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Planning Stage,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Planning Done,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Planning Stage,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Handover to Factory,Planning Stage,Planning Stage,887064000036581866
+Order Status,887064000009107167,CustomModule2,Active,Planning Stage,Handover for Production,Planning Done,887064000036581869
+Order Status,887064000009107167,CustomModule2,Active,Align Measurement,Reverse,Assign Designer,887064000040440254
+Order Status,887064000009107167,CustomModule2,Active,Handover to Factory,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Order in Split,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Testimonial Recieved,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Request for Customer Testimony,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Received Site Images,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Remote Handover,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Consoles Installed,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Console Dispatched,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installed,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Rafter Dispatched,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Production Started,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Refund,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing in Process,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Measurement Done,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Assign Designer,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Align Measurement,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Site Not Ready,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Pending from SM,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,-None-,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Automation,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Start Rafter Process,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Revision,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Ready for Dispatch,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Request Console Dispatch,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Planning Done,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Planning Stage,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Cancelled,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Cancelled,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Cancelled,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Order in Full,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Planning Stage,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Planning Done,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Request Console Dispatch,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Ready for Dispatch,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Revision,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Start Rafter Process,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Automation,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,-None-,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Pending from SM,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,On Hold,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Site Not Ready,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Align Measurement,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Assign Designer,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Measurement Done,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing in Process,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Refund,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Production Started,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Rafter Dispatched,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installed,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Console Dispatched,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Consoles Installed,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Remote Handover,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Received Site Images,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Request for Customer Testimony,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Testimonial Recieved,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Order in Split,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Handover to Factory,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Pending,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Produced,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Dispatch Request,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Rafter Received,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Missing and Damage,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Pending,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Produced,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Dispatch Request,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Rafter Received,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Missing and Damage,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Pending,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Produced,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Dispatch Request,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Rafter Received,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Missing and Damage,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Pending,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Produced,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Dispatch Request,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Rafter Received,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Missing and Damage,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,Add Payment Details Production,Payment Confirmation Pending,887064000047364820
+Order Status,887064000009107167,CustomModule2,Active,Production Started,Produced,Produced,887064000047364828
+Order Status,887064000009107167,CustomModule2,Active,Produced,Request Rafter Dispatch,Dispatch Request,887064000047364830
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installation Started,Check Missing and Damage,Missing and Damage,887064000047364873
+Order Status,887064000009107167,CustomModule2,Active,Rafter Received,Rafter Installation start,Rafter Installation Started,887064000047364875
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Rafter Payment Confirmed,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Rafter Payment Confirmed,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Rafter Payment Confirmed,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Rafter Payment Confirmed,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Pending,Confirm Production Payment,Payment Confirmed,887064000047604162
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation,Confirm Rafter Payment,Rafter Payment Confirmed,887064000047604164
+Order Status,887064000009107167,CustomModule2,Active,Produced,Add Payment Details Rafter,Payment Confirmation,887064000048248023
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Console,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed Console,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Console,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed Console,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Console,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed Console,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Console,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed Console,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Console,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed Console,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Rafter Installed,Add Payment Details Console,Payment Confirmation Console,887064000048248519
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Console,Console Payment Confirmed,Payment Confirmed Console,887064000048248520
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,Reverse,Assign Designer,887064000040440254
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,Pending Req. from SMs,Pending from SM,887064000008985574
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,On Hold by Client,On Hold,887064000008985578
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,Assign Designer,Assign Designer,887064000009107001
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,Production Drawing in Process,Production Drawing in Process,887064000009107013
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,Order Cancel,Cancelled,887064000043495383
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,Request Rafter Dispatch,Dispatch Request,887064000047364830
+Order Status,887064000009107167,CustomModule2,Active,Console Missing and Damage,Reverse,Assign Designer,887064000040440254
+Order Status,887064000009107167,CustomModule2,Active,Console Installation Started,Check Missing and Damage.,Console Missing and Damage,887064000048356220
+Order Status,887064000009107167,CustomModule2,Active,Testimonial Recieved,Reverse to Rafter Installed,Rafter Installed,887064000048356361
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed Console,Reverse.1,Production Drawing Discussion,887064000048356423
+Order Status,887064000009107167,CustomModule2,Active,Rafter Payment Confirmed,Request Rafter Dispatch,Dispatch Request,887064000047364830
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Pending,Reject Production Payment,Production Drawing Discussion,887064000049604229
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation,Reject Rafter Payment,Produced,887064000049604255
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmation Console,Reject Console Payment,Rafter Installed,887064000049604256
+Order Status,887064000009107167,CustomModule2,Active,Align Measurement,as,Assign Designer,887064000049672920
+Order Status,887064000009107167,CustomModule2,Active,Assign Designer,A M,Align Measurement,887064000049690537
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed,Handover to Factory New,Handover to Factory,887064000026894410
+Order Status,887064000009107167,CustomModule2,Active,Dispatch Request,Move to handover to production,Handover to Factory,887064000050171297
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed Console,Request For Console,Request Console Dispatch,887064000021540451
+Order Status,887064000009107167,CustomModule2,Active,Production Drawing Discussion,Handover to Fac pin,Handover to Factory,887064000050423843
+Order Status,887064000009107167,CustomModule2,Active,Payment Confirmed,Handover to Factory,Handover to Factory,887064000011660780
+Order Status,887064000009107167,CustomModule2,Active,Assigned Pre-Design,Handover to Factory,Handover to Factory,887064000011660780
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,-None-,Assign Designer,Assign Designer,887064000009266043
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Pending Req. from SMs,Req. completed,-None-,887064000009266051
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,-None-,Pending Req. from SMs,Pending Req. from SMs,887064000009266049
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,-None-,Site Not Ready,Site Not Ready,887064000009266055
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,-None-,On Hold by Client,On Hold by Client,887064000009266059
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Assign Designer,Align Measurement,Align Measurement,887064000009266063
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Align Measurement,Measurement Done,Measurement Done,887064000009266067
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Measurement Done,Measurement Dis-Approved,Align Measurement,887064000009266069
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Measurement Done,Production Drawing in Process,Production Drawing in Process,887064000009266073
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Drawing in Process,Production Drawing Discussion,Production Drawing Discussion,887064000009266077
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Drawing Discussion,Refund,Refund,887064000009266081
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Handover to Factory,Production Started,Production Started,887064000009266085
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Started,Rafter Dispatched,Rafter Dispatched,887064000009266089
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Rafter Dispatched,Assign Installation Manager,Assign Installation Manager,887064000009266093
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Assign Installation Manager,Start Rafter Process,Start Rafter Process,887064000009266097
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Start Rafter Process,Rafter Installed,Rafter Installed,887064000009266101
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Rafter Installed,Consoles Dispatched,Consoles Dispatched,887064000009266105
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Rafter Installed,Paint Dispatched,Paint Dispatched,887064000009266109
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Paint Dispatched,Console Dispatched,Console Dispatched,887064000009266113
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Console Dispatched,Paint Finished,Paint Finished,887064000009266117
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Paint Finished,Consoles Installed,Consoles Installed,887064000009266121
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Console Dispatched,Consoles Installed,Consoles Installed,887064000009266121
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Consoles Installed,Automation Done,Automation Done,887064000009266125
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Automation Done,Remote Handover,Remote Handover,887064000009266129
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Remote Handover,Received Site Images,Received Site Images,887064000009266133
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Received Site Images,Request for Customer Testimony,Request for Customer Testimony,887064000009266137
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Request for Customer Testimony,Testimonial Received,Testimonial Received,887064000009266141
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Site Not Ready,Assign Designer,Assign Designer,887064000009266043
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,On Hold by Client,Assign Designer,Assign Designer,887064000009266043
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Drawing Revision,Assign Designer,Assign Designer,887064000009266043
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Handover to Factory,Assign Designer,Assign Designer,887064000009266043
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Drawing Revision,Consoles Installed,Consoles Installed,887064000009266121
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Handover to Factory,Consoles Installed,Consoles Installed,887064000009266121
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Drawing Discussion,Drawing Revision,Production Drawing Revision,887064000012276182
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Drawing Revision,Drawings Discussion,Production Drawing Discussion,887064000012276184
+Sub-Order Blueprint,887064000009425549,CustomModule1,Active,Production Drawing Discussion,Handover to factory,Handover to Factory,887064000012276237
+Quote Stages,887064000022871721,Quotes,Active,Draft,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,Assigned Designer,Send to Approval,Sent To SM,887064000025612972
+Quote Stages,887064000022871721,Quotes,Active,Sent To SM,Approve,Confirmed,887064000029068704
+Quote Stages,887064000022871721,Quotes,Active,Sent To SM,Revise Quote,Revision Requited,887064000029068707
+Quote Stages,887064000022871721,Quotes,Active,Confirmed,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,Sent To SM,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,Final Quote,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,Confirmed,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,Draft,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,Void,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,Sent To SM,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,Assigned Designer,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,Assigned Designer,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,Draft,Assign Designer,Assigned Designer,887064000045849227
+Quote Stages,887064000022871721,Quotes,Active,Revision Requited,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,Revision Requited,Send to Approval,Sent To SM,887064000025612972
+Quote Stages,887064000022871721,Quotes,Active,Revision Requited,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,Revision Requited,Assign Designer,Assigned Designer,887064000045849227
+Quote Stages,887064000022871721,Quotes,Active,Confirmed,Revise Quote,Revision Requited,887064000029068707
+Quote Stages,887064000022871721,Quotes,Active,On Hold,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,Default,Void,Void,887064000022871714
+Quote Stages,887064000022871721,Quotes,Active,On Hold,Send to Approval,Sent To SM,887064000025612972
+Quote Stages,887064000022871721,Quotes,Active,Default,Send to Approval,Sent To SM,887064000025612972
+Quote Stages,887064000022871721,Quotes,Active,On Hold,Revise Quote,Revision Requited,887064000029068707
+Quote Stages,887064000022871721,Quotes,Active,Default,Revise Quote,Revision Requited,887064000029068707
+Quote Stages,887064000022871721,Quotes,Active,On Hold,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,Default,Final Quote,Final Quote,887064000029832450
+Quote Stages,887064000022871721,Quotes,Active,On Hold,Assign Designer,Assigned Designer,887064000045849227
+Quote Stages,887064000022871721,Quotes,Active,Default,Assign Designer,Assigned Designer,887064000045849227
+Quote Stages,887064000022871721,Quotes,Active,Draft,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Revision Requited,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Final Quote,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Confirmed,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Void,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Sent To SM,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Assigned Designer,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Default,On Hold,On Hold,887064000047602108
+Quote Stages,887064000022871721,Quotes,Active,Draft,No Scope,Default,887064000047602109
+Quote Stages,887064000022871721,Quotes,Active,On Hold,No Scope,Default,887064000047602109
+Quote Stages,887064000022871721,Quotes,Active,Revision Requited,No Scope,Default,887064000047602109
+Quote Stages,887064000022871721,Quotes,Active,Final Quote,No Scope,Default,887064000047602109
+Quote Stages,887064000022871721,Quotes,Active,Confirmed,No Scope,Default,887064000047602109
+Quote Stages,887064000022871721,Quotes,Active,Void,No Scope,Default,887064000047602109
+Quote Stages,887064000022871721,Quotes,Active,Sent To SM,No Scope,Default,887064000047602109
+Quote Stages,887064000022871721,Quotes,Active,Assigned Designer,No Scope,Default,887064000047602109
+Lead Quality Flow,887064000046095233,CustomModule16,Active,Open,Re-Evaluated,Revise,887064000046095219
+Lead Quality Flow,887064000046095233,CustomModule16,Active,Open,Acknowledged,Done,887064000046095315
+Lead Quality Flow,887064000046095233,CustomModule16,Active,Open,Disputed,Disputed,887064000046095331
+Lead Quality Flow,887064000046095233,CustomModule16,Active,Disputed,Re-Evaluated,Revise,887064000046095219
+Lead Quality Flow,887064000046095233,CustomModule16,Active,Done,Re-Evaluated,Revise,887064000046095219
+Lead Quality Flow,887064000046095233,CustomModule16,Active,Revise,Acknowledged,Done,887064000046095315
+Lead Quality Flow,887064000046095233,CustomModule16,Active,Revise,Disputed,Disputed,887064000046095331
+Quote Stages UAE,887064000049029085,Quotes,Active,Draft,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,Assigned Designer,Send to Approval,Sent To SM,887064000049029088
+Quote Stages UAE,887064000049029085,Quotes,Active,Sent To SM,Approve,Confirmed,887064000049029089
+Quote Stages UAE,887064000049029085,Quotes,Active,Sent To SM,Revise Quote,Revision Required,887064000049029090
+Quote Stages UAE,887064000049029085,Quotes,Active,Confirmed,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,Final Quote,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,Confirmed,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,Draft,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,Void,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,Assigned Designer,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,Assigned Designer,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,Draft,Assign Designer,Assigned Designer,887064000049029092
+Quote Stages UAE,887064000049029085,Quotes,Active,Revision Required,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,Revision Required,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,Revision Required,Assign Designer,Assigned Designer,887064000049029092
+Quote Stages UAE,887064000049029085,Quotes,Active,Confirmed,Revise Quote,Revision Required,887064000049029090
+Quote Stages UAE,887064000049029085,Quotes,Active,On Hold,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,No Scope,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,On Hold,Revise Quote,Revision Required,887064000049029090
+Quote Stages UAE,887064000049029085,Quotes,Active,No Scope,Revise Quote,Revision Required,887064000049029090
+Quote Stages UAE,887064000049029085,Quotes,Active,On Hold,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,No Scope,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,On Hold,Assign Designer,Assigned Designer,887064000049029092
+Quote Stages UAE,887064000049029085,Quotes,Active,No Scope,Assign Designer,Assigned Designer,887064000049029092
+Quote Stages UAE,887064000049029085,Quotes,Active,Draft,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,Revision Required,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,Final Quote,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,Confirmed,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,Void,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,Assigned Designer,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,No Scope,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,Draft,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,On Hold,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,Revision Required,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,Final Quote,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,Confirmed,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,Void,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,Assigned Designer,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,Sent To SM,Void,Void,887064000049029087
+Quote Stages UAE,887064000049029085,Quotes,Active,Sent To SM,Final Quote,Final Quote,887064000049029091
+Quote Stages UAE,887064000049029085,Quotes,Active,Sent To SM,Assign Designer,Assigned Designer,887064000049029092
+Quote Stages UAE,887064000049029085,Quotes,Active,Sent To SM,On Hold,On Hold,887064000049029093
+Quote Stages UAE,887064000049029085,Quotes,Active,Sent To SM,No Scope,No Scope,887064000049029094
+Quote Stages UAE,887064000049029085,Quotes,Active,Confirmed,Send to Approval,Sent To SM,887064000049029088
+Quote Stages UAE,887064000049029085,Quotes,Active,Revision Required,Send to Approval,Sent To SM,887064000049029088
+Quote Stages UAE,887064000049029085,Quotes,Active,On Hold,Send to Approval,Sent To SM,887064000049029088
+Quote Stages UAE,887064000049029085,Quotes,Active,No Scope,Send to Approval,Sent To SM,887064000049029088
+Order Status,887064000052307976,CustomModule17,Draft,Assign Designer,Align Measurement,Align Measurement,887064000052387839
+Order Status,887064000052307976,CustomModule17,Draft,Align Measurement,Measurement Done,Measurement Done,887064000052387848
+Order Status,887064000052307976,CustomModule17,Draft,Measurement Done,Production Drawing in Process,Production Drawing in Process,887064000052387857
+Order Status,887064000052307976,CustomModule17,Draft,Production Drawing in Process,Production Drawing Discussion,Production Drawing Discussion,887064000052387866
+Order Status,887064000052307976,CustomModule17,Draft,Production Drawing Discussion,Handover to Factory,Handover to Factory,887064000052387867
+Order Status,887064000052307976,CustomModule17,Draft,-None-,Assign Designer,Assign Designer,887064000052387881
+Quotation Stages,887064000053525946,CustomModule19,Active,Draft,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,No Scope,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,Void,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,Assigned Designer,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,Sent to Approval,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,Draft,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,On Hold,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,Void,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,Assigned Designer,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,Sent to Approval,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,Draft,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,No Scope,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,On Hold,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,Assigned Designer,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,Sent to Approval,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,Draft,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,Void,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,No Scope,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,On Hold,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,Sent to Approval,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,Sent to Approval,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,Void,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,No Scope,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,On Hold,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,Draft,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,Confirmed,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,Final Quote,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,Revision Required,On Hold,On Hold,887064000053525923
+Quotation Stages,887064000053525946,CustomModule19,Active,Confirmed,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,Final Quote,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,Revision Required,No Scope,No Scope,887064000053525924
+Quotation Stages,887064000053525946,CustomModule19,Active,Confirmed,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,Final Quote,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,Revision Required,Void,Void,887064000053525925
+Quotation Stages,887064000053525946,CustomModule19,Active,Confirmed,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,Final Quote,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,Revision Required,Assigned Designer,Assigned Designer,887064000053525926
+Quotation Stages,887064000053525946,CustomModule19,Active,Confirmed,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,Final Quote,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,Revision Required,Sent To Approval,Assigned Designer,887064000053525927
+Quotation Stages,887064000053525946,CustomModule19,Active,Sent to Approval,Approve,Confirmed,887064000055440462
+Quotation Stages,887064000053525946,CustomModule19,Active,Confirmed,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,Sent to Approval,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,Assigned Designer,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,Void,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,No Scope,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,On Hold,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,Draft,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,Revision Required,Final Quote,Final Quote,887064000055440463
+Quotation Stages,887064000053525946,CustomModule19,Active,Revision Required,Revise Quote,Sent to Approval,887064000055440464
+Quotation Stages,887064000053525946,CustomModule19,Active,Final Quote,Revise Quote,Sent to Approval,887064000055440464
+Quotation Stages,887064000053525946,CustomModule19,Active,Confirmed,Revise Quote,Sent to Approval,887064000055440464
+Quotation Stages,887064000053525946,CustomModule19,Active,Assigned Designer,Revise Quote,Sent to Approval,887064000055440464
+Quotation Stages,887064000053525946,CustomModule19,Active,Void,Revise Quote,Sent to Approval,887064000055440464
+Quotation Stages,887064000053525946,CustomModule19,Active,No Scope,Revise Quote,Sent to Approval,887064000055440464
+Quotation Stages,887064000053525946,CustomModule19,Active,On Hold,Revise Quote,Sent to Approval,887064000055440464
+Quotation Stages,887064000053525946,CustomModule19,Active,Draft,Revise Quote,Sent to Approval,887064000055440464

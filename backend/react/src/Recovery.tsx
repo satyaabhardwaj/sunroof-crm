@@ -62,7 +62,7 @@ export function Recovery({ reset = false }: { reset?: boolean }) {
   }
   return (
     <AuthLayout>
-      <p className="auth-eyebrow">MAGPPIE CRM</p>
+      <p className="auth-eyebrow">SUNROOOF CRM</p>
       <h1>{reset ? "Reset password" : "Forgot password?"}</h1>
       <p className="auth-intro">
         {reset

@@ -6,6 +6,8 @@ from fastapi import HTTPException
 from sqlalchemy import select, insert, delete
 from .models import sessions, users, credentials, auth_accounts, auth_sessions
 
+SESSION_IDLE_SECONDS = 20 * 60
+
 def digest(value):
     return hashlib.sha256(value.encode()).hexdigest()
 
@@ -29,7 +31,7 @@ def authenticate(engine, email, password, realm="", db=None):
         raise HTTPException(401,'Email or password is incorrect.')
     if realm:
         require_realm(db, row['user_id'], realm)
-    return row['user_id'],3600
+    return row['user_id'],SESSION_IDLE_SECONDS
 
 
 def identity(db, token, realm=""):
@@ -45,6 +47,7 @@ def identity(db, token, realm=""):
     return dict(user)
 
 def issue(db, user_id, lifetime, realm=""):
+    lifetime = min(lifetime, SESSION_IDLE_SECONDS)
     user = db.execute(select(users).where(users.c.id==user_id,users.c.active==1)).first()
     if not user:
         raise HTTPException(403,'Your account has not been granted CRM access.')

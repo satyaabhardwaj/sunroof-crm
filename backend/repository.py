@@ -52,6 +52,9 @@ def save_legacy(db, user, incoming):
     if changed.rowcount != 1:
         revision = db.execute(select(state.c.rev)).scalar_one()
         raise HTTPException(409, {'error':'stale','rev':revision})
+    previous = db.execute(select(state.c.payload).where(state.c.id == 1)).scalar_one()
+    if incoming.get('sunroof') != previous.get('sunroof'):
+        raise HTTPException(422, 'Use the Sunroof workspace to change Sunroof orders.')
     existing = set(db.execute(select(clients.c.id)).scalars())
     incoming_ids = {c['id'] for c in incoming['clients']}
     if not existing.issubset(incoming_ids):

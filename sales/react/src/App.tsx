@@ -247,9 +247,15 @@ export function App() {
     open: (c) => navigate(c.stage === "post" ? "tracker" : c.stage, c),
   };
   const count = (id: string) =>
-    id === "approvals"
-      ? approvalRows(all).filter((r) => r.status === "Pending").length
-      : all.filter((c) => c.stage === id).length;
+    id === "avp"
+      ? clients(all).filter(
+          (c) =>
+            c.special?.siteMeasurement?.status === "Pending" ||
+            c.payment.custom?.status === "Pending",
+        ).length
+      : id === "approvals"
+        ? approvalRows(all).filter((r) => r.status === "Pending").length
+        : all.filter((c) => c.stage === id).length;
   const navSummary = (id: string) => {
     const list = clients(all).filter((c) => c.stage === id),
       L = rules(),

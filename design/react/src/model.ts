@@ -290,6 +290,7 @@ export interface Flow {
   ept: Part & { step: string; signedAt: string; file: string };
   appliances: Part & {
     items: { name: string; make: string; note: string; at: string }[];
+    request?: { items: import("./appliance-request").ApplianceRequestItem[] };
     signedAt: string;
     file: string;
   };

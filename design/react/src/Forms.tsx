@@ -1,3 +1,4 @@
+import { ApplianceRequest } from "./ApplianceRequest";
 import { useState, type SetStateAction } from "react";
 const drafts = new Map<string, unknown>();
 function useDraft<T>(
@@ -478,98 +479,101 @@ export function AppliancesForm({ c, ctx }: FormProps) {
     />
   );
   return (
-    <div className="cols2">
-      <Card
-        title={"Appliance list · " + ap.items.length + " item(s)"}
-        tone="blue"
-      >
-        {ap.items.map((item, i) => (
-          <div className="line rule" key={i}>
-            <span>
-              <b>{item.name}</b>
-              {item.make && " · " + item.make}
-              {item.note && " · " + item.note}
-            </span>
-            <Button
-              tone="small line"
-              onClick={() =>
-                ctx.update(() => {
-                  ap.items.splice(i, 1);
-                  ap.signedAt = "";
-                })
-              }
-            >
-              Remove
-            </Button>
+    <>
+      <ApplianceRequest c={c} ctx={ctx} />
+      <div className="cols2">
+        <Card
+          title={"Appliance list · " + ap.items.length + " item(s)"}
+          tone="blue"
+        >
+          {ap.items.map((item, i) => (
+            <div className="line rule" key={i}>
+              <span>
+                <b>{item.name}</b>
+                {item.make && " · " + item.make}
+                {item.note && " · " + item.note}
+              </span>
+              <Button
+                tone="small line"
+                onClick={() =>
+                  ctx.update(() => {
+                    ap.items.splice(i, 1);
+                    ap.signedAt = "";
+                  })
+                }
+              >
+                Remove
+              </Button>
+            </div>
+          ))}
+          {!ap.items.length && <p>No appliances on the list yet.</p>}
+          <div className="g3">
+            {field("name", "Appliance")}
+            {field("make", "Brand / model")}
+            {field("note", "Note")}
           </div>
-        ))}
-        {!ap.items.length && <p>No appliances on the list yet.</p>}
-        <div className="g3">
-          {field("name", "Appliance")}
-          {field("make", "Brand / model")}
-          {field("note", "Note")}
-        </div>
-        {a.error && (
-          <p role="alert" className="msg">
-            {a.error}
-          </p>
-        )}
-        <Button
-          onClick={() =>
-            a.run(() => {
-              addAppliance(c, draft.name, draft.make, draft.note);
-              setDraft({ ...draft, name: "", make: "", note: "" });
-            })
-          }
-        >
-          Add appliance
-        </Button>
-      </Card>
-      <Card title="With the client" tone="violet">
-        <Facts
-          items={[
-            ["Sent to client", s.sent + " time(s)"],
-            ["Sent back by client", s.returned + " time(s)"],
-            ["Signed by client", ap.signedAt ? day(ap.signedAt) : "Not yet"],
-          ]}
-        />
-        <Button onClick={() => a.run(() => applianceAction(c, "send"))}>
-          List sent to client
-        </Button>
-        {field("back", "If the client sent it back: what they want changed")}
-        <Button
-          onClick={() =>
-            a.run(() => {
-              applianceAction(c, "return", draft.back);
-              setDraft({ ...draft, back: "" });
-            })
-          }
-        >
-          Client sent the list back
-        </Button>
-        {ap.signedAt ? (
-          <Pill tone="green">Signed {day(ap.signedAt)}</Pill>
-        ) : (
+          {a.error && (
+            <p role="alert" className="msg">
+              {a.error}
+            </p>
+          )}
           <Button
-            tone="dark"
-            onClick={() => a.run(() => applianceAction(c, "sign"))}
+            onClick={() =>
+              a.run(() => {
+                addAppliance(c, draft.name, draft.make, draft.note);
+                setDraft({ ...draft, name: "", make: "", note: "" });
+              })
+            }
           >
-            Client signed the appliance list
+            Add appliance
           </Button>
-        )}
-        <Attachment
-          owner={c.id}
-          label="Signed appliance list"
-          name={ap.file}
-          onUploaded={(v) =>
-            ctx.update(() => {
-              L.flow(c).appliances.file = v;
-            })
-          }
-        />
-        <History logs={ap.log} limit={6} />
-      </Card>
-    </div>
+        </Card>
+        <Card title="With the client" tone="violet">
+          <Facts
+            items={[
+              ["Sent to client", s.sent + " time(s)"],
+              ["Sent back by client", s.returned + " time(s)"],
+              ["Signed by client", ap.signedAt ? day(ap.signedAt) : "Not yet"],
+            ]}
+          />
+          <Button onClick={() => a.run(() => applianceAction(c, "send"))}>
+            List sent to client
+          </Button>
+          {field("back", "If the client sent it back: what they want changed")}
+          <Button
+            onClick={() =>
+              a.run(() => {
+                applianceAction(c, "return", draft.back);
+                setDraft({ ...draft, back: "" });
+              })
+            }
+          >
+            Client sent the list back
+          </Button>
+          {ap.signedAt ? (
+            <Pill tone="green">Signed {day(ap.signedAt)}</Pill>
+          ) : (
+            <Button
+              tone="dark"
+              onClick={() => a.run(() => applianceAction(c, "sign"))}
+            >
+              Client signed the appliance list
+            </Button>
+          )}
+          <Attachment
+            owner={c.id}
+            label="Signed appliance list"
+            name={ap.file}
+            onUploaded={(v) =>
+              ctx.update(() => {
+                L.flow(c).appliances.file = v;
+              })
+            }
+          />
+          <History logs={ap.log} limit={6} />
+        </Card>
+      </div>
+    </>
   );
 }
 export function DesignFlowForm({ c, ctx }: FormProps) {

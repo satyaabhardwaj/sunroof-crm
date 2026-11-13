@@ -322,3 +322,18 @@
 .site-details .msg {
   margin: 0;
 }
+
+/* Custom payment plan (26 Oct 2026) */
+.custom-plan {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-surface-2);
+}
+.custom-plan .line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

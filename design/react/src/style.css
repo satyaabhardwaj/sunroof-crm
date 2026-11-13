@@ -258,3 +258,87 @@
 .kitchen-designer-link svg {
   flex-shrink: 0;
 }
+
+.appliance-request {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+  margin-bottom: var(--space-4);
+}
+.appliance-request-items {
+  display: grid;
+  gap: var(--space-3);
+}
+.appliance-request-item {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+.appliance-request-item .line {
+  margin-bottom: var(--space-2);
+}
+.appliance-request-item .g3 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.appliance-request-item .field {
+  margin-bottom: var(--space-2);
+}
+.appliance-request-add {
+  margin-top: var(--space-4);
+}
+.appliance-request-entry {
+  margin-bottom: var(--space-4);
+}
+@media (max-width: 1023.98px) {
+  .appliance-request {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 767.98px) {
+  .appliance-request-item .g3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.appliance-request-item summary {
+  cursor: pointer;
+}
+.appliance-request-item summary b {
+  margin-left: 4px;
+}
+.appliance-request-item summary .sub {
+  display: block;
+  margin: 4px 0 0 18px;
+}
+.appliance-request-item[open] summary {
+  margin-bottom: var(--space-3);
+}
+
+.appliance-whatsapp {
+  color: #fff;
+  background: #166b42;
+  border-color: #166b42;
+  text-decoration: none;
+}
+.appliance-whatsapp:hover {
+  color: #fff;
+  background: #115333;
+}
+
+.appliance-check-actions {
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+.appliance-request-item.checked {
+  border-color: #78a58d;
+  background: #f6fbf8;
+}
+.appliance-request-item summary input[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+  margin: 0 5px 0 0;
+  vertical-align: middle;
+  accent-color: #166b42;
+  cursor: pointer;
+}

@@ -23,7 +23,9 @@ export type Department =
   | "design"
   | "measurement"
   | "accounts"
-  | "management";
+  | "management"
+  | "factory"
+  | "design-head";
 export const DEPARTMENTS: [Department, string][] = [
   ["sales", "Sales"],
   ["design", "Design"],
@@ -69,8 +71,14 @@ export function AppHeader({
   search,
   actions,
   primary,
+  brand = "MAGPPIE",
+  brandLogo,
+  departments = DEPARTMENTS,
 }: {
   current: Department;
+  brand?: string;
+  brandLogo?: ReactNode;
+  departments?: [Department, string][];
   // Label of the module's sidebar; shows the menu button that opens it as a drawer on small screens.
   navigation?: string;
   search?: ReactNode;
@@ -112,17 +120,21 @@ export function AppHeader({
         ) : (
           <span className="app-menu app-menu-space" aria-hidden="true" />
         )}
-        <div className="app-logo" role="img" aria-label="MAGPPIE">
-          <span className="app-logo-mark" aria-hidden="true">
-            M
-          </span>
-          <span className="app-logo-word" aria-hidden="true">
-            MAGPPIE
-          </span>
+        <div className="app-logo" role="img" aria-label={brand}>
+          {brandLogo || (
+            <>
+              <span className="app-logo-mark" aria-hidden="true">
+                {brand[0]}
+              </span>
+              <span className="app-logo-word" aria-hidden="true">
+                {brand}
+              </span>
+            </>
+          )}
         </div>
       </div>
       <nav className="depts app-tabs" aria-label="Departments" ref={tabs}>
-        {DEPARTMENTS.map(([id, label]) => (
+        {departments.map(([id, label]) => (
           <a
             key={id}
             href={"/" + id + "/"}

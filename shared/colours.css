@@ -1,0 +1,141 @@
+/* Zen house theme (Manish, 26 Oct 2026): the theme of the 10x Engine hub and the Tasks & Tokens app, taken from
+   magppie-erp-live/design-system (SKILL.md, theme.css) and docs/ZEN-DESIGN.md. Beige and brown only, no black, no grey;
+   SF Pro on Apple and Inter elsewhere; statuses are a coloured dot + word, never a coloured background behind text.
+   This file is loaded LAST on every page, so it wins over the older styles. The live copy is shared/colours.css.
+   Roll back (colours and this look only):  bash scripts/colours.sh classic   ·   back to zen:  bash scripts/colours.sh zen */
+:root {
+  /* the house tokens */
+  --z-bg: #efe6d6; --z-bar: #f3ebdd; --z-surface: #fbf6ee; --z-surface-2: #f0e6d5;
+  --z-ink: #3b2a1e; --z-ink-2: #8b7259; --z-line: #e3d5bf; --z-line-strong: #cdb797;
+  --z-primary: #7a5538; --z-primary-soft: #eadbc3;
+  --z-good: #5f7a45; --z-good-soft: #e7ead2; --z-warn: #a97a2d; --z-warn-soft: #f3e4c3; --z-alert: #9e4f38; --z-alert-soft: #f3ddd1;
+  --c-1: #6c7d4c; --c-2: #b0693c; --c-3: #4e6e62; --c-4: #93606a; --c-5: #8e6b45; --c-6: #7e7448; --c-7: #6e5a7a; --c-8: #a88e6e;
+
+  /* the CRM's own names, pointed at the house tokens */
+  --color-page: var(--z-bg);
+  --color-surface: var(--z-surface);
+  --color-surface-2: var(--z-surface-2);
+  --color-ink: var(--z-ink);
+  --color-ink-2: var(--z-ink-2);
+  --color-ink-3: var(--z-ink-2);
+  --color-line: var(--z-line);
+  --color-edge: var(--z-line-strong);
+  --color-hover: var(--z-surface-2);
+  --color-accent: var(--z-primary);
+  --color-accent-ink: var(--z-primary);
+  --color-accent-soft: var(--z-primary-soft);
+  --color-focus: var(--z-primary);
+  --color-success: var(--z-good);
+  --color-success-soft: var(--z-good-soft);
+  --color-success-strong: var(--z-good);
+  --color-warning: var(--z-warn);
+  --color-warning-soft: var(--z-warn-soft);
+  --color-warning-strong: var(--z-warn);
+  --color-danger: var(--z-alert);
+  --color-danger-strong: var(--z-alert);
+  --color-danger-soft: var(--z-alert-soft);
+  --color-on-dark: var(--z-surface);
+  --color-backdrop: rgba(59, 42, 30, 0.35);
+  --color-subtle: var(--z-surface-2);
+  --color-neutral-soft: var(--z-surface-2);
+  --color-neutral-ink: var(--z-ink-2);
+  --color-strong: var(--z-ink);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-1: 0 1px 2px rgba(59, 42, 30, 0.06);
+  --shadow-2: 0 14px 30px rgba(59, 42, 30, 0.12);
+  --shadow-3: 0 14px 30px rgba(59, 42, 30, 0.16);
+  --line: var(--z-line);
+}
+body { background: var(--z-bg); color: var(--z-ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+
+/* ---------- shell: top bar and side menu on the bar colour ---------- */
+.app-header { background: var(--z-bar); border-bottom-color: var(--z-line); }
+.app-logo-mark { background: var(--z-primary); color: var(--z-surface); }
+.app-icon-button, .avatar, .user-avatar { border-color: var(--z-line) !important; background: var(--z-surface-2) !important; color: var(--z-primary) !important; }
+.crm-sidebar { background: var(--z-bar); border-color: var(--z-line); }
+.stagebar { background: var(--z-bar); }
+
+/* ---------- cards: 18px, thin sand border, brown shadow ---------- */
+.card { border: 1px solid var(--z-line); border-radius: 18px; box-shadow: var(--shadow-1); }
+.card-h { border-bottom-color: var(--z-line); }
+.card-h h2 { font-size: 16px; letter-spacing: -0.01em; }
+/* tinted card heads become one calm tint; the colour stays in a thin top edge */
+.t-blue, .t-violet, .t-green, .t-amber, .t-teal, .t-grey { background: var(--z-surface); color: var(--z-ink); }
+.card-h.t-blue { box-shadow: inset 0 3px 0 var(--c-3); }
+.card-h.t-violet { box-shadow: inset 0 3px 0 var(--c-4); }
+.card-h.t-green { box-shadow: inset 0 3px 0 var(--c-1); }
+.card-h.t-amber { box-shadow: inset 0 3px 0 var(--c-2); }
+.card-h.t-teal { box-shadow: inset 0 3px 0 var(--c-3); }
+.card-h.t-red h2, .card-h.t-red span { color: var(--z-alert); }
+.soft, .chip, .incentive { background: var(--z-surface-2); border-radius: 14px; }
+
+/* ---------- statuses: a coloured dot + word, never a background ---------- */
+.pill, .heat { gap: 6px; min-height: 20px; padding: 0; background: none !important; border-radius: 0; font-weight: 500; font-size: 12.5px; color: var(--z-ink-2); }
+.pill::before, .heat::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill.green { color: var(--z-good); }
+.pill.yellow, .heat.medium { color: var(--z-warn); }
+.pill.red, .heat.high { color: var(--z-alert); }
+.pill.blue { color: var(--c-3); }
+.pill.grey, .heat.low { color: var(--z-ink-2); }
+
+/* ---------- buttons: 8px, one chestnut primary ---------- */
+.btn { border-radius: 8px; border-color: var(--z-line-strong); background: var(--z-surface); color: var(--z-ink); }
+.btn:hover:not(:disabled) { background: var(--z-surface-2); }
+.btn.dark { border-color: var(--z-primary); background: var(--z-primary); color: var(--z-surface); }
+.btn.dark:hover:not(:disabled) { background: #6a4930; }
+.btn.line { border-color: var(--z-primary); }
+.btn.warn { color: var(--z-alert); }
+.btn.dash { border-color: var(--z-line-strong); }
+.btn.rec { border-color: var(--z-alert); background: var(--z-alert-soft); color: var(--z-alert); }
+
+/* ---------- fields: 12px corners, sand borders ---------- */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea {
+  border-color: var(--z-line-strong); border-radius: 12px; background-color: var(--z-surface); color: var(--z-ink);
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible, .btn:focus-visible { outline: 2px solid var(--z-primary); outline-offset: 1px; }
+
+/* ---------- Measurement: the four visit types in the house category hues ---------- */
+.vt { margin-left: 0; padding: 0; background: none !important; border-radius: 0; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.vt::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.vt-first { color: var(--c-3); }
+.vt-eptMarking { color: var(--c-4); }
+.vt-eptVerification { color: var(--c-2); }
+.vt-pdi { color: var(--c-1); }
+.vt-revisit, .vt-request { color: var(--z-alert); }
+.vcol { background: var(--z-surface-2); border-color: var(--z-line); border-radius: 18px; }
+.vcol header { background: var(--z-surface) !important; color: var(--z-ink) !important; border-radius: 12px; }
+.vcol-first header { box-shadow: inset 4px 0 0 var(--c-3); }
+.vcol-eptMarking header { box-shadow: inset 4px 0 0 var(--c-4); }
+.vcol-eptVerification header { box-shadow: inset 4px 0 0 var(--c-2); }
+.vcol-pdi header { box-shadow: inset 4px 0 0 var(--c-1); }
+.vcol header .vcount, .vcount { background: none !important; color: var(--z-ink-2); }
+.vcard, .vtoday-card, .vteam-card { background: var(--z-surface); border-color: var(--z-line); border-radius: 14px; }
+.vcard:hover, .vtoday-card:hover { border-color: var(--z-line-strong); box-shadow: var(--shadow-2); }
+.vcard-late, .vtoday-nobody { background: var(--z-surface); border-color: var(--z-alert); }
+.vtoday-nobody b { color: var(--z-alert); }
+.vcard-request { background: var(--z-surface); border-color: var(--z-line-strong); }
+.vline-first { border-left-color: var(--c-3); } .vline-eptMarking { border-left-color: var(--c-4); }
+.vline-eptVerification { border-left-color: var(--c-2); } .vline-pdi { border-left-color: var(--c-1); }
+.vtoday, .vteam { background: var(--z-surface-2); border-color: var(--z-line); border-radius: 18px; }
+.vtag, .vflag { display: inline-flex; align-items: center; gap: 6px; width: auto; padding: 0; background: none !important; border-radius: 0; font-weight: 500; font-size: 12.5px; }
+.vtag::before, .vflag::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.vtag.grey { color: var(--z-ink-2); } .vtag.blue { color: var(--c-3); } .vtag.green, .vflag.green { color: var(--z-good); }
+.vtag.red, .vflag.red { color: var(--z-alert); } .vflag.amber { color: var(--z-warn); }
+.vpending { background: none; padding: 0; color: var(--z-alert); }
+.vpending::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; }
+.vsuggest { background: var(--z-good-soft); color: var(--z-ink); border-radius: 12px; }
+.vchange, .vask { background: var(--z-warn-soft); color: var(--z-ink); border-radius: 12px; }
+.vask { background: var(--z-alert-soft); }
+.vgiven { color: var(--z-primary); }
+.vmore { border-color: var(--z-line-strong); color: var(--z-ink-2); }
+.vmore:hover { background: var(--z-surface); color: var(--z-ink); }
+
+/* ---------- notification bell ---------- */
+.note.new { background: var(--z-primary-soft); }
+.badge { background: var(--z-alert); }
+
+/* ---------- Sales and Design one-offs ---------- */
+.custom-plan { background: var(--z-surface-2); border-color: var(--z-line); border-radius: 14px; }

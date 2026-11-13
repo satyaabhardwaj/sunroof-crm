@@ -21,6 +21,15 @@ export interface EstimatePlan {
   visits: number | null;
   visitRate: number | null;
 }
+export interface CustomPlan {
+  shares: [string, number][];
+  status: "Draft" | "Pending" | "Approved" | "Rejected";
+  reason?: string;
+  requestedAt?: string;
+  decidedAt?: string;
+  decidedBy?: string;
+  note?: string;
+}
 export interface SpecialApproval {
   status: "Pending" | "Approved" | "Rejected";
   requestedAt: string;
@@ -139,6 +148,8 @@ export interface SalesClient extends Client {
   };
   payment: {
     plan: string;
+    /** A custom plan (26 Oct 2026): stages and % set by Sales, approved by the AVP (Tavneet). */
+    custom?: CustomPlan;
     receipts: Receipt[];
     expectedBy?: string;
     tokenPlan?: number;
@@ -247,6 +258,8 @@ export interface Rules {
     { label: string; approver: string; shares: [string, number][] }
   >;
   STAGES: [string, string][];
+  planShares(c: Client): [string, number][];
+  customPlanOk(c: Client): boolean;
   shares(c: Client): { name: string; percent: number; amount: number }[];
   bookingDue(c: Client): number;
   bookingLeft(c: Client): number;

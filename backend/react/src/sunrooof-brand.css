@@ -1,0 +1,8 @@
+.sunrooof-brand {display:inline-block;width:175px;flex-shrink:0;vertical-align:middle;mix-blend-mode:multiply;}
+.sunrooof-brand svg {display:block;width:100%;height:auto;}
+.sunroof-auth-logo .sunrooof-brand {display:inline-block;margin-top:0;}
+@media(min-width:1024px){.sunroof-auth-logo .sunrooof-brand {width:236px;}}
+@media(max-width:639.98px){.sunrooof-brand {width:148px;}}
+html[data-crm-view=phone] .app-header .sunrooof-brand {width:148px;}
+
+.sunroof-auth-logo {mix-blend-mode:multiply;}

@@ -6,7 +6,21 @@
   L.PLANS = {
     SM: { label: 'SM · 50 / 30 / 20', approver: 'SM', shares: [['Booking', 50], ['Production', 30], ['PDI', 20]] },
     AVP: { label: 'AVP · 25 / 25 / 30 / 20', approver: 'AVP', shares: [['Booking', 25], ['EPT', 25], ['Production', 30], ['PDI', 20]] },
-    Founder: { label: 'Founder · 25 / 25 / 30 / 15 / 5', approver: 'Founder', shares: [['Booking', 25], ['EPT', 25], ['Production', 30], ['PDI', 15], ['EHOD', 5]] }
+    Founder: { label: 'Founder · 25 / 25 / 30 / 15 / 5', approver: 'Founder', shares: [['Booking', 25], ['EPT', 25], ['Production', 30], ['PDI', 15], ['EHOD', 5]] },
+    // Custom (Manish, 26 Oct 2026): Sales sets the stages and %; it needs the AVP's (Tavneet's) approval before booking.
+    // Until stages are set, the SM shares stand in.
+    Custom: { label: 'Custom · AVP approval', approver: 'AVP', shares: [['Booking', 50], ['Production', 30], ['PDI', 20]] }
+  };
+  // The shares that count for a client: a custom plan's own stages, or the fixed plan's.
+  L.planShares = function (c) {
+    const custom = c.payment.plan === 'Custom' && c.payment.custom && c.payment.custom.shares;
+    return custom && custom.length ? custom : (L.PLANS[c.payment.plan] || L.PLANS.SM).shares;
+  };
+  // A custom plan is ready only when its stages add up to 100% and the AVP approved them.
+  L.customPlanOk = function (c) {
+    if (c.payment.plan !== 'Custom') return true;
+    const k = c.payment.custom || {};
+    return k.status === 'Approved' && (k.shares || []).reduce(function (n, s) { return n + Number(s[1] || 0); }, 0) === 100;
   };
   L.STAGES = [['qualified', 'Qualified'], ['design', 'In design'], ['booked', 'Booked · collecting']];
 
@@ -154,7 +168,7 @@
   L.shares = function (c) {
     const total = L.totals(c).total;
     // Each share is rounded to the rupee; the last one takes what is left, so the shares always add up to the total.
-    const list = L.PLANS[c.payment.plan].shares;
+    const list = L.planShares(c);
     let given = 0;
     return list.map(function (s, i) {
       const amount = i === list.length - 1 ? total - given : Math.round(total * s[1] / 100);
@@ -187,7 +201,7 @@
   //   dispatch  100% in                                             -> may be dispatched
   L.GATES = [['design', 'Booking · to Design'], ['drawing', 'Production drawing'], ['factory', 'Factory go-ahead'], ['dispatch', 'Dispatch']];
   L.gatePct = function (c, key) {
-    const shares = L.PLANS[c.payment.plan].shares;
+    const shares = L.planShares(c);
     if (key === 'design') return shares[0][1];
     if (key === 'dispatch') return 100;
     let sum = 0, hit = false;

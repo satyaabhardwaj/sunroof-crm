@@ -14,6 +14,7 @@ export function NavIcon({ name }: { name: string }) {
     design: "m4 16 12-12 4 4L8 20H4v-4Z",
     booked: "M5 4h14v16H5V4Zm3 5h8m-8 4h8",
     approvals: "m5 12 4 4L19 6",
+    avp: "M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Zm-3 9 2 2 4-4",
     team: "M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5 9v-3a5 5 0 0 1 10 0v3m2-14a3 3 0 0 1 0 6m2 3a4 4 0 0 1 4 4",
     payments: "M3 5h18v14H3V5Zm0 5h18m-5 5h2",
     incentive: "M4 20V12h4v8m2 0V8h4v12m2 0V4h4v16",
@@ -55,8 +56,24 @@ export function NavIcon({ name }: { name: string }) {
     >
       <path
         d={
-          paths[name] ||
-          "M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"
+          paths[
+            (
+              {
+                today: "home",
+                cashflow: "payments",
+                people: "team",
+                measurement: "assigned",
+                drawings: "design",
+                assignment: "team",
+                production: "factory",
+                qc: "approvals",
+                packing: "booking",
+                submitted: "approvals",
+                issues: "reports",
+                review: "reports",
+              } as Record<string, string>
+            )[name] || name
+          ] || "M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"
         }
       />
     </svg>

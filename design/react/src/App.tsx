@@ -441,6 +441,13 @@ export function App() {
                   </svg>
                 </a>
               )}
+              {!rules().handed(c) && open.kind !== "appliances" && (
+                <div className="appliance-request-entry">
+                  <Button onClick={() => ctx.show("appliances", c.id)}>
+                    Prepare appliance list for client
+                  </Button>
+                </div>
+              )}
               <TopFacts c={c} />
               <fieldset
                 className="design-form"

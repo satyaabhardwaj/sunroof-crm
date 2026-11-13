@@ -10,7 +10,7 @@ from sqlalchemy import create_engine, select, update, delete, text
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.pool import NullPool
 from .config import Settings, ROOT
-from .models import clients, state, grants, sessions, credentials
+from .models import clients, state, grants, sessions, credentials, auth_sessions
 from . import auth, repository
 from core.security import public_file
 
@@ -28,7 +28,7 @@ def create_app(settings=None, engine=None, authenticator=None, recovery_sender=N
     settings = settings or Settings.load()
     engine = engine or create_engine(settings.database_url, pool_pre_ping=True, poolclass=NullPool,
                                     connect_args={'prepare_threshold':None,'connect_timeout':10})
-    app = FastAPI(title='MAGPPIE CRM', version='0.1.0', docs_url=None, redoc_url=None, openapi_url=None)
+    app = FastAPI(title='SUNROOF CRM', version='0.1.0', docs_url=None, redoc_url=None, openapi_url=None)
     app.state.engine = engine
     realm = settings.auth_realm if settings.environment != 'development' else ''
     provider = authenticator or (lambda email,password: auth.authenticate(engine,email,password,realm))
@@ -100,6 +100,7 @@ def create_app(settings=None, engine=None, authenticator=None, recovery_sender=N
                 response=mfa.cookie(JSONResponse({'mfa_required':True},status_code=202),'crm_mfa_challenge',challenge,300)
                 response.delete_cookie('crm_session',path='/')
                 return response
+            lifetime=min(lifetime,auth.SESSION_IDLE_SECONDS)
             token=auth.issue(db,user_id,lifetime,realm)
             repository.event(db,user_id,'session.login')
         response=JSONResponse({'ok':True})
@@ -110,7 +111,10 @@ def create_app(settings=None, engine=None, authenticator=None, recovery_sender=N
     def logout(request:Request):
         with engine.begin() as db:
             mfa.revoke_challenge(db,request.cookies.get('crm_mfa_challenge',''))
-            db.execute(delete(sessions).where(sessions.c.hash==auth.digest(request.cookies.get('crm_session',''))))
+            token_hash=auth.digest(request.cookies.get('crm_session',''))
+            # Explicit cleanup also works in the isolated SQLite demo without FK cascades.
+            db.execute(delete(auth_sessions).where(auth_sessions.c.hash==token_hash))
+            db.execute(delete(sessions).where(sessions.c.hash==token_hash))
         response=JSONResponse({'ok':True});response.delete_cookie('crm_session',path='/');response.delete_cookie('crm_mfa_challenge',path='/');return response
 
     @app.get('/api/auth/me')
@@ -118,7 +122,20 @@ def create_app(settings=None, engine=None, authenticator=None, recovery_sender=N
         with engine.connect() as db:
             user = signed_in(db,request)
             email = db.execute(select(credentials.c.email).where(credentials.c.user_id==user['id'])).scalar_one_or_none()
-            return {**user, 'email': email, 'mfa_enrollment_required': mfa.enrollment_required(db,user)}
+            expires=db.scalar(select(sessions.c.expires).where(sessions.c.hash==auth.digest(request.cookies.get('crm_session',''))))
+            return {**user, 'email': email, 'sessionExpiresAt': expires * 1000, 'mfa_enrollment_required': mfa.enrollment_required(db,user)}
+
+    @app.post('/api/auth/activity')
+    def activity(request:Request):
+        # Only explicit user activity renews the idle deadline. GET polling never does.
+        with engine.begin() as db:
+            signed_in(db,request)
+            stamp=int(time.time());expires=stamp+auth.SESSION_IDLE_SECONDS
+            changed=db.execute(update(sessions).where(sessions.c.hash==auth.digest(request.cookies.get('crm_session','')),sessions.c.expires>stamp).values(expires=expires))
+            if changed.rowcount!=1: raise HTTPException(401,'Session expired. Sign in again.')
+        response=JSONResponse({'expiresAt':expires*1000})
+        response.set_cookie('crm_session',request.cookies['crm_session'],httponly=True,secure=settings.origin.startswith('https:'),samesite='strict',max_age=auth.SESSION_IDLE_SECONDS,path='/')
+        return response
 
     @app.get('/api/store')
     def store(request:Request):
@@ -173,6 +190,9 @@ def create_app(settings=None, engine=None, authenticator=None, recovery_sender=N
         try: return connection.requests(refresh=refresh==1)
         except ZohoError as error: raise HTTPException(503,str(error)) from None
 
+    from .sunroof import register as register_sunroof
+    register_sunroof(app, engine, who, settings)
+
     from .recovery import register_recovery
     register_recovery(app, engine, settings, recovery_sender)
 
@@ -209,11 +229,13 @@ def create_app(settings=None, engine=None, authenticator=None, recovery_sender=N
             try: user=signed_in(db,request)
             except HTTPException: return RedirectResponse('/login',status_code=303)
             if mfa.enrollment_required(db,user): return RedirectResponse('/security',status_code=303)
-        if not path: return RedirectResponse('/sales/',status_code=303)
+        if not path: return RedirectResponse('/design/',status_code=303)
+        if path.strip('/') in ('design', 'measurement', 'accounts', 'factory', 'design-head'):
+            path = 'design/index.html'
         # A measurement person's own page (/my-visits) is the Measurement app in its "my visits" mode. Logins with
         # assigned-only access may open it and load its scripts and styles, but no department dashboard.
         if path=='my-visits': path='measurement/index.html'
-        elif user['role']=='assigned' and not path.startswith(('measurement/assets/','measurement/vendor/','measurement/common/','measurement/look.css','shared/')):
+        elif user['role']=='assigned' and path != 'design/index.html' and not path.startswith(('design/assets/','measurement/assets/','measurement/vendor/','measurement/common/','measurement/look.css','shared/')):
             raise HTTPException(403,'Assigned users access /api/clients; legacy dashboards require workspace access.')
         target=(ROOT/path).resolve()
         if target.is_dir(): target=target/'index.html'

@@ -19,6 +19,9 @@ import { ContactForm } from "./ContactForm";
 import {
   askSpecialMeasurement,
   decideSpecialMeasurement,
+  askCustomPlan,
+  decideCustomPlan,
+  setCustomPlan,
   fillFromEstimate,
   news,
   requestPayment,
@@ -357,6 +360,7 @@ export function PaymentForm({ c, ctx }: FormProps) {
           })
         }
       />
+      {p.plan === "Custom" && <CustomPlan c={c} ctx={ctx} />}
       <div className="sub">
         {L.shares(c)
           .map((s) => s.name + " " + s.percent + "% " + money(s.amount))
@@ -663,10 +667,6 @@ export function SpecialForm({ c, ctx }: FormProps) {
       <div className="line rule">
         <span>
           <b>First site measurement before the token</b>
-          <p className="sub">
-            Approved by {approver ? approver.name + " (AVP)" : "the AVP"}. Once
-            approved, the request goes to Measurement.
-          </p>
         </span>
         <Pill
           tone={
@@ -746,11 +746,6 @@ export function SpecialForm({ c, ctx }: FormProps) {
         <p className="sub">Waiting for {approver?.name || "the AVP"}.</p>
       )}
       {(!token || s || c.siteAsk) && <SiteDetails c={c} ctx={ctx} />}
-      {token && !s && (
-        <p className="sub">
-          The token is in: the designer books the site measurement now.
-        </p>
-      )}
       {error && (
         <p role="alert" className="msg">
           {error}
@@ -903,6 +898,154 @@ export function SiteDetails({ c, ctx }: FormProps) {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+// Custom payment plan (Manish, 26 Oct 2026): Sales types the stages and %, Tavneet (AVP) approves or refuses.
+// The booking cannot be submitted until it is approved; any change sends it back for approval.
+export function CustomPlan({ c, ctx }: FormProps) {
+  const k = c.payment.custom,
+    rows: [string, number][] = k?.shares.length
+      ? k.shares
+      : [
+          ["Booking", 50],
+          ["Production", 30],
+          ["PDI", 20],
+        ];
+  const [reason, setReason] = useState(""),
+    [note, setNote] = useState(""),
+    [error, setError] = useState("");
+  const me = window.People.list[0],
+    approver = window.People.list.find((x) => x.role === "AVP"),
+    canDecide = me?.role === "AVP",
+    total = rows.reduce((n, r) => n + (Number(r[1]) || 0), 0),
+    locked = k?.status === "Pending";
+  const run = (fn: () => void) => {
+    try {
+      setError("");
+      ctx.update(fn);
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+  const put = (next: [string, number][]) => run(() => setCustomPlan(c, next));
+  return (
+    <div className="custom-plan">
+      <div className="line">
+        <b>Custom plan stages</b>
+        <Pill
+          tone={
+            k?.status === "Approved"
+              ? "green"
+              : k?.status === "Rejected"
+                ? "red"
+                : k?.status === "Pending"
+                  ? "blue"
+                  : "grey"
+          }
+        >
+          {k?.status === "Pending"
+            ? "With " + (approver?.name || "AVP")
+            : k?.status || "Not sent"}
+        </Pill>
+      </div>
+      {rows.map(([name, pct], i) => (
+        <div className="g2 custom-row" key={i}>
+          <Field
+            label={"Stage " + (i + 1) + (i === 0 ? " (booking)" : "")}
+            value={name}
+            onCommit={(v) =>
+              !locked && put(rows.map((r, j) => (j === i ? [v, r[1]] : r)))
+            }
+          />
+          <Field
+            label="%"
+            type="number"
+            value={pct}
+            onCommit={(v) =>
+              !locked &&
+              put(rows.map((r, j) => (j === i ? [r[0], Number(v) || 0] : r)))
+            }
+          />
+        </div>
+      ))}
+      {!locked && (
+        <div className="flexrow">
+          <Button
+            onClick={() => put([...rows, ["Stage " + (rows.length + 1), 0]])}
+          >
+            + Add stage
+          </Button>
+          {rows.length > 2 && (
+            <Button onClick={() => put(rows.slice(0, -1))}>Remove last</Button>
+          )}
+          <span className={total === 100 ? "sub" : "msg"}>
+            Total {total}%{total === 100 ? "" : " · must be 100%"}
+          </span>
+        </div>
+      )}
+      {k?.reason && (
+        <p className="sub">
+          Why: {k.reason}
+          {k.decidedBy
+            ? " · " +
+              k.status +
+              " by " +
+              k.decidedBy +
+              (k.note ? " · " + k.note : "")
+            : ""}
+        </p>
+      )}
+      {(!k || k.status === "Draft" || k.status === "Rejected") && (
+        <>
+          <Field
+            label="Why does the client need this plan?"
+            value={reason}
+            immediate
+            onCommit={setReason}
+          />
+          <Button
+            tone="dark"
+            onClick={() =>
+              run(() => {
+                if (!c.payment.custom) setCustomPlan(c, rows);
+                askCustomPlan(c, reason);
+              })
+            }
+          >
+            Send to {approver?.name || "AVP"} for approval
+          </Button>
+        </>
+      )}
+      {locked && canDecide && (
+        <>
+          <Field label="Note" value={note} immediate onCommit={setNote} />
+          <div className="flexrow">
+            <Button
+              tone="dark"
+              onClick={() =>
+                run(() => decideCustomPlan(c, true, me.name, note))
+              }
+            >
+              Approve
+            </Button>
+            <Button
+              tone="warn"
+              onClick={() =>
+                run(() => decideCustomPlan(c, false, me.name, note))
+              }
+            >
+              Reject
+            </Button>
+          </div>
+        </>
+      )}
+      {error && (
+        <p role="alert" className="msg">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

@@ -1,0 +1,79 @@
+SUNROOF CRM — EXISTING ZOHO WORKFLOW RESEARCH
+Research date: 12 November 2026
+Status: discovery for discussion; application workflow not changed.
+
+AGREED PROJECT SCOPE
+Keep the copied backend architecture and UI/UX. Phase one begins at Post-design and ends at Ready for dispatch. Retain the requested two-password concept; exact access rights for each password must be agreed before implementation. No passwords have been set by this research.
+
+WHAT WAS EXAMINED
+185 module/menu entries; field metadata requests for 135 API-supported modules; layouts and related lists for 15 relevant modules; all 10 listed Blueprints and all 151 workflow rule configurations (89 active, 62 inactive); 26 roles. Four metadata requests returned 204 (no content).
+Read selected status, relationship and timestamp fields across every page of 2,117 Orders, 1,448 Orders V2, 488 Sub Orders and 9,183 Payment Milestones: 13,236 records, with pagination exhausted. Inspected available Blueprint actions on 17 representative Orders at different stages. These are scoped record projections, not a full export of every CRM record or attachment.
+Only authentication token refresh and CRM GET requests were performed. No CRM records, transitions, notifications or settings were changed. OAuth tokens were held in process memory, not written into the project.
+
+MOST IMPORTANT FINDING: TWO ORDER MODELS EXIST
+Orders has an active Order Status Blueprint and records modified on 12 November 2026. Its Order_Status field is populated on 904 of 2,117 records; 1,213 are empty. This is the strongest evidence for the presently maintained operational workflow.
+Orders V2 has a Draft Blueprint. All 1,448 Order_Status values are empty. Alternative text fields hold stages: Post_Sheet_Stage is populated on 503 records, and Order_Stage_Main on 468. V2 also has active automation, so it must not be dismissed as unused. Its latest observed modification is 5 November 2026.
+Sub Orders has an active Blueprint, but all 488 sampled-through-pagination Status fields are empty; latest observed modification is 13 April 2026.
+Conclusion: use Orders as the provisional workflow reference, and reconcile V2 and Sub Orders with the team before selecting the future import source. Do not automatically merge or double-count these modules.
+
+OBSERVED POST-DESIGN PATH
+1. Designer Assigned -> Align Measurement -> Measurement Done.
+2. Measurement Done -> Production Drawing in Process -> Production Drawing Discussion.
+3. Drawing review can return to Production Drawing Revision and then to discussion.
+4. Drawing discussion has payment entry and multiple factory-handover actions. The payment branch moves to Pending Production Payment, with confirmation/rejection routes in the configured Blueprint. Confirmation leads to Payment Confirmed, from which factory handover is available.
+5. Handover to Factory -> Planning Stage -> Handover to Production -> Production Started -> Produced.
+6. Produced exposes both Request Rafter Dispatch and Add Payment Details Rafter. The latter leads to Pending Rafter Payment, with confirmation/rejection routes; Rafter Payment Confirmed can request dispatch.
+7. Request Rafter Dispatch -> Request for Rafter E-Way Bill. The Blueprint's underlying state is named Ready for Dispatch; the live record's Order_Status value is Request for Rafter E-Way Bill.
+8. Upload E-way Bill, actual dispatch, installation, console operations, remote handover and testimonials continue downstream. They should remain outside phase one unless the user explicitly moves the endpoint.
+
+This is a connected process with alternative routes, not a universally enforced straight line. In particular, do not assume payment confirmation is unavoidable: direct factory-handover and direct dispatch-request actions also exist. One factory-handover action was criteria-blocked for an inspected record, while other variants were available. The applicable criteria, ownership and widget rules need confirmation.
+
+STATE LABELS AND STORED VALUES ARE NOT INTERCHANGEABLE
+Examples from the graph and live record actions:
+- Assign Designer (Blueprint state) corresponds to Designer Assigned in records.
+- Planning Done corresponds to Handover to Production.
+- Payment Confirmation Pending corresponds to Pending Production Payment.
+- Payment Confirmation corresponds to Pending Rafter Payment.
+- Dispatch Request corresponds to Request Rafter Dispatch.
+- Ready for Dispatch corresponds to Request for Rafter E-Way Bill.
+The importer must preserve source IDs and explicit mappings rather than assume a label is the API value. Orders V2 additionally has Ready for Dispatch as a picklist option, but its Order_Status is currently empty on every retrieved record.
+
+EXCEPTIONS AND REWORK
+The Blueprint includes Pending from SM, On Hold, refund, cancellation, measurement rejection, drawing revisions, reassignment and reverse routes. Some steps appear to be duplicate or test-like actions (for example A M, as and several factory-handover variants); their names alone do not prove they are unused. Keep them in the evidence inventory and ask which should survive in Sunroof.
+
+PAYMENTS AND RELATIONSHIPS
+Orders links to Opportunities (Deals). Payment Milestones can link to Deals, Orders and Orders V2 through different fields. Payment_M_X_Sub_Orders provides the payment-to-sub-order join.
+Payment status is not just paid/unpaid: Unpaid 7,774; Paid/Confirmed 978; Paid 309; Discounted 57; Partially Paid 23; Partially Confirmed 8; empty 34.
+Separate fields track PI approval and Accounts approval with or without management discount. A Paid value must not be treated as equivalent to Paid/Confirmed without a deliberate rule.
+Named automations handle balances, advance amounts, TDS, freight, tax carry-forward, management amounts and storage charges. Function references were inventoried; their executable source and complete financial formulas were not retrieved, so no payment percentage or calculation is asserted here.
+
+DISPATCH INFORMATION
+The inspected Request for Rafter E-Way Bill action exposes transport name and GST number, billing name, expected dispatch date, billing and shipping addresses, vehicle type/number, FOC and product type. These fields were marked non-optional in the response. Address components may be composite UI fields; confirm the actual user form before implementing every raw API component as a separate required input.
+Do not insert Final QC into the pre-dispatch sequence solely because the label sounds relevant: in the inspected existing process, its available action includes Remote/App Handover, indicating a later lifecycle position.
+
+AUTOMATION AND PERMISSIONS
+Orders and Orders V2 each have an active Align_measurement rule: an Order_Status change to Align Measurement schedules an email notification and webhook after two minutes. Their active status does not prove they ran for every record.
+Relevant role names include Post Sales Head, Post Sales Team, Designers, Factory Head, Management, Installation Managers, SM and PSM. The inspection used an Administrator/Super Admin account; visible actions do not establish what each ordinary role may execute.
+
+ACCESS LIMITS AND UNRESOLVED LOGIC
+- Organization-information endpoint returned OAUTH_SCOPE_MISMATCH. The supplied account's user/module/Blueprint metadata identifies Sunrooof, but the formal organization profile was unavailable.
+- Global transition-detail endpoint requires an additional scope and returned OAUTH_SCOPE_MISMATCH. Blueprint connections and per-record allowed actions were accessible and inspected instead.
+- Mandatory widgets are present in measurement alignment, factory handover, planning and payment entry. Their full internal screens, validations and integrations were not exposed by these responses.
+- Custom function code, webhook implementations, independent approval-process definitions, all custom kiosk/dashboard logic, full per-record histories and attachments have not been audited. They are not assumed to be covered by the workflow-rule inventory.
+- V2's alternative stage fields and duplicate-looking records require reconciliation before importing.
+
+FUTURE DATA FETCH DESIGN — PROPOSAL ONLY
+Use a server-side Zoho reader with credentials outside source control. Start with read-only sync; retain module API name plus Zoho record ID as a compound source identity and Modified_Time for reconciliation. Map Orders, V2 and payment joins explicitly. Keep payment confirmation separate from payment entry. Preserve exceptions and revision events. Do not trigger Zoho transitions, emails or webhooks during import. Stage mapping and deduplication need approval before a live import.
+
+DISCUSSION BEFORE BUILDING
+1. Is Orders the operational source of truth, and what should happen to Orders V2 records?
+2. Does Ready for dispatch mean production is finished, payment is confirmed, the e-way bill is requested, or the bill is uploaded? The current Blueprint uses the request stage as its Ready for Dispatch state.
+3. Which factory-handover and dispatch actions may skip the payment-confirmation branch, and who can authorize an exception?
+4. Does phase one cover full orders, split/room-wise orders, or both?
+5. What can each of the two password access modes see and change?
+6. What happens inside the mandatory measurement, planning, factory and payment widgets?
+
+Next step: read the user's full workflow conversation, compare it with this evidence, resolve the differences together, and only then modify Sunroof's workflow.
+
+Evidence: local API audit JSON under .local/zoho-research-2026-11-12 (ignored by Git); module inventory, Blueprint edges, automation inventory, transition-field inventory and aggregate status counts beside this report. No credentials are included in these files.
+API references: https://www.zoho.com/crm/developer/docs/api/v8/blueprints.html ; https://www.zoho.com/crm/developer/docs/api/v8/blueprint-details.html ; https://www.zoho.com/crm/developer/docs/api/v8/get-all-workflows.html

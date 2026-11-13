@@ -162,16 +162,7 @@ export function OcfForm({ c, ctx }: FormProps) {
   }
   return (
     <Card title="6 · OCF">
-      <p>
-        The Order Closure Form is made as a PDF in the company format: client
-        and billing details, the dates, the product table, payment stages, terms
-        and signature lines.
-      </p>
-      {c.ocfAt && (
-        <p className="hint">
-          OCF made on {day(c.ocfAt)}. The drawing signoff counts from this date.
-        </p>
-      )}
+      {c.ocfAt && <p className="hint">OCF made on {day(c.ocfAt)}</p>}
       {!rules().totals(c).total && (
         <p className="msg">Fill the order value first.</p>
       )}
@@ -198,11 +189,7 @@ export function OcfForm({ c, ctx }: FormProps) {
             {s.test && " · test mode"}
             {s.checkedAt && " · last checked " + day(s.checkedAt)}
           </p>
-        ) : (
-          <p className="sub">
-            The client gets an email and signs on their phone or laptop.
-          </p>
-        )}
+        ) : null}
         {s?.people && (
           <p>
             {s.people
@@ -220,13 +207,9 @@ export function OcfForm({ c, ctx }: FormProps) {
             {message || c.ocfSignProblem}
           </p>
         )}
-        <p className="sub">
-          {s?.auto
-            ? "Sent by itself when the token came in."
-            : !s
-              ? "Once Zoho Sign is switched on, this is sent by itself as soon as the token is in."
-              : ""}
-        </p>
+        {s?.auto && (
+          <p className="sub">Sent by itself when the token came in.</p>
+        )}
         <div className="flexrow">
           <Button
             tone="dark"

@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { Security } from "./MFA";
 import { Recovery } from "./Recovery";
-import { Login } from "./Auth";
+import { ViewChoice } from "./ViewChoice";
 import "./auth.css";
 createRoot(document.getElementById("auth-root")!).render(
   location.pathname === "/security" ? (
@@ -11,6 +11,6 @@ createRoot(document.getElementById("auth-root")!).render(
   ) : location.pathname === "/reset-password" ? (
     <Recovery reset />
   ) : (
-    <Login />
+    <ViewChoice />
   ),
 );
