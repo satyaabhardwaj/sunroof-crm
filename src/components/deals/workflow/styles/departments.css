@@ -835,3 +835,103 @@ html[data-crm-view="phone"] .sun-has-sidebar .sun-stage-tools {
     font-size: 14px;
   }
 }
+
+/* ---- Views: Cards, Table, Kanban, Calendar, Agenda, Status (14 Nov). Sunrooof palette: powder blue, lavender-white, peach. */
+.sun-views { display: flex; gap: 4px; margin: 0 24px 16px; padding: 4px; width: max-content; max-width: calc(100% - 48px); overflow-x: auto; background: #f1f0fa; border-radius: 12px; }
+.sun-views button { border: 0; background: transparent; border-radius: 9px; padding: 8px 14px; font: 500 12px var(--font); color: #5f5a6b; cursor: pointer; white-space: nowrap; }
+.sun-views button span { font-size: 10px; opacity: .7; margin-left: 4px; }
+.sun-views button.on { background: #fff; color: #2d3b63; box-shadow: 0 1px 3px rgb(45 59 99 / .12); }
+.sun-views button:hover:not(.on) { background: #e9e8f8; }
+.sun-late { color: var(--color-danger); font-weight: 600; }
+.sun-ok { color: var(--color-success); }
+.sun-owner { display: inline-block; border-radius: 999px; padding: 2px 9px; font: 600 11px var(--font); background: #e9e8f8; color: #4a3f73; }
+.sun-owner-design { background: #dcebfc; color: #1e4f8f; }
+.sun-owner-accounts { background: #fde6dc; color: #8a3b17; }
+.sun-owner-factory, .sun-owner-dispatch { background: #eceaf3; color: #4b4658; }
+.sun-owner-measurement { background: #e3f3ea; color: #23633d; }
+.sun-owner-design-head { background: #ede7fb; color: #55427b; }
+
+.sun-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; padding: 0 24px 24px; }
+.sun-card { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid #e4e2f0; border-left: 4px solid #8db9f0; border-radius: 14px; background: #fff; }
+.sun-card.late { border-left-color: #f5b69e; }
+.sun-card-stage { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; }
+.sun-card-stage small { color: #77728a; }
+.sun-card-stage .sun-late { margin-left: auto; font-size: 12px; }
+.sun-progress { height: 4px; border-radius: 4px; background: #eeedf6; overflow: hidden; }
+.sun-progress i { display: block; height: 100%; background: linear-gradient(90deg, #8db9f0, #f5b69e); }
+.sun-card-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.sun-card-head .sun-client-link { font-size: 16px; font-weight: 600; }
+.sun-card-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sun-card-facts span { display: flex; flex-direction: column; gap: 2px; padding: 8px; border-radius: 10px; background: #f7f6fc; font: 600 12px var(--font); text-align: center; }
+.sun-card-facts small { font-weight: 400; color: #77728a; font-size: 11px; }
+.sun-card-note { margin: 0; font-size: 13px; display: flex; flex-direction: column; gap: 2px; }
+.sun-card-note small, .sun-card-next small { color: #77728a; font-size: 11px; }
+.sun-card-next { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; padding: 10px; border-radius: 10px; background: #f3f8fe; }
+
+.sun-kanban-toggle { margin: 0 24px 10px; }
+.sun-kanban { display: flex; gap: 12px; overflow-x: auto; padding: 0 24px 24px; align-items: flex-start; }
+.sun-kanban-col { flex: 0 0 250px; display: flex; flex-direction: column; gap: 8px; padding: 10px; border-radius: 14px; background: #f5f4fb; }
+.sun-kanban-col header { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; }
+.sun-kanban-col header .sun-count { margin-left: auto; }
+.sun-kanban-card { display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 10px; border: 1px solid #e4e2f0; border-radius: 10px; background: #fff; font: 13px var(--font); cursor: pointer; }
+.sun-kanban-card small { color: #77728a; font-size: 11px; }
+.sun-kanban-card:hover { border-color: #8db9f0; }
+
+.sun-calendar { padding: 0 24px 24px; }
+.sun-calendar-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.sun-calendar-bar b { min-width: 140px; text-align: center; }
+.sun-calendar-split { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; }
+.sun-calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.sun-calendar-head { font: 600 11px var(--font); color: #77728a; text-align: center; text-transform: uppercase; letter-spacing: .06em; }
+.sun-calendar-day { position: relative; aspect-ratio: 1.1; border: 1px solid transparent; border-radius: 10px; background: transparent; font: 500 13px var(--font); cursor: pointer; }
+.sun-calendar-day.out { opacity: .35; }
+.sun-calendar-day.coming { background: #dcebfc; }
+.sun-calendar-day.past { background: #f1f0f6; }
+.sun-calendar-day.overdue { background: #fde6dc; }
+.sun-calendar-day.now { background: #fbe9c9; }
+.sun-calendar-day.today { border-color: #2d3b63; }
+.sun-calendar-day.chosen { box-shadow: 0 0 0 2px #8db9f0; }
+.sun-calendar-count { position: absolute; top: 3px; right: 6px; font-size: 10px; font-weight: 700; color: #8a3b17; }
+.sun-calendar-list h3 { margin: 0 0 8px; font-size: 14px; }
+.sun-calendar-legend { margin: 12px 0 0; font-size: 12px; color: #77728a; }
+.sun-calendar-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin: 0 4px 0 10px; vertical-align: middle; }
+.sun-calendar-legend .overdue::before { background: #fde6dc; }
+.sun-calendar-legend .now::before { background: #fbe9c9; }
+.sun-calendar-legend .coming::before { background: #dcebfc; }
+.sun-event-visit { border-left: 3px solid #8db9f0; }
+.sun-event-date { border-left: 3px solid #b8b2d8; }
+.sun-event-task { border-left: 3px solid #f5b69e; }
+
+.sun-agenda { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 14px; }
+.sun-agenda h3 { margin: 0 0 6px; font-size: 13px; color: #55427b; }
+
+.sun-status { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; padding: 0 24px 24px; }
+.sun-status section { padding: 12px; border-radius: 14px; background: #f7f6fc; }
+.sun-status h3 { margin: 0 0 8px; font-size: 13px; }
+.sun-status-row { position: relative; display: flex; justify-content: space-between; width: 100%; padding: 7px 8px; border: 0; border-radius: 8px; background: transparent; font: 13px var(--font); cursor: pointer; overflow: hidden; text-align: left; }
+.sun-status-row i { position: absolute; left: 0; top: 0; bottom: 0; background: #dcebfc; z-index: 0; border-radius: 8px; }
+.sun-status-row span, .sun-status-row b { position: relative; z-index: 1; }
+.sun-status-row.on { outline: 2px solid #8db9f0; }
+.sun-status-list { grid-column: 1 / -1; }
+
+/* ---- Bell (two columns, a cross per line, Clear all) and the task list. */
+.bell .badge.calm { background: #2d3b63; }
+.sun-bell { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sun-bell .note-h { display: flex; align-items: center; gap: 8px; }
+.sun-bell .note-h .btn { margin-left: auto; }
+.sun-bell .note { display: flex; align-items: flex-start; gap: 6px; }
+.sun-bell .note .who { flex: 1; display: flex; flex-direction: column; gap: 2px; text-align: left; border: 0; background: transparent; cursor: pointer; font: inherit; padding: 0; }
+.note-x { border: 0; background: transparent; font-size: 18px; line-height: 1; color: #77728a; cursor: pointer; padding: 2px 6px; border-radius: 6px; }
+.note-x:hover { background: #fde6dc; color: #8a3b17; }
+.sun-tasks { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.sun-task { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding: 12px; border: 1px solid #e4e2f0; border-left: 4px solid #8db9f0; border-radius: 12px; }
+.sun-task.late { border-left-color: #f5b69e; }
+.sun-task > div:first-child { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.sun-task-side { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.sun-task .dept-review { flex-basis: 100%; }
+
+@media (max-width: 760px) {
+  .sun-views { margin: 0 16px 12px; max-width: calc(100% - 32px); }
+  .sun-cards, .sun-kanban, .sun-calendar, .sun-agenda, .sun-status { padding-left: 16px; padding-right: 16px; }
+  .sun-calendar-split, .sun-bell { grid-template-columns: 1fr; }
+}

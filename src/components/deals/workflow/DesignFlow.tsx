@@ -45,7 +45,7 @@ export function DesignFlow({ order: o, dept, save, upload, Documents }: Props) {
     !o.clientApproved &&
     (!last || ["rejected", "returned"].includes(last.status));
   const [reason, setReason] = useState("");
-  const [withoutPdi, setWithoutPdi] = useState(false);
+  const [pdiRequired, setPdiRequired] = useState(false);
   const pdi = (o.visits || []).find(
     (v) => v.kind === "pdi" && v.status !== "rejected",
   );
@@ -268,23 +268,21 @@ export function DesignFlow({ order: o, dept, save, upload, Documents }: Props) {
             Needs: client-approved drawing, production payment confirmed by
             Accounts, dispatch date and shipping address.
           </p>
-          {!pdi && (
-            <label className="dept-check">
-              <input
-                type="checkbox"
-                checked={withoutPdi}
-                onChange={(e) => setWithoutPdi(e.target.checked)}
-              />{" "}
-              Send without a PDI visit
-            </label>
-          )}
+          <label className="dept-check">
+            <input
+              type="checkbox"
+              checked={pdiRequired}
+              onChange={(e) => setPdiRequired(e.target.checked)}
+            />{" "}
+            PDI required
+          </label>
           {pdi && pdi.status !== "approved" && (
             <p className="sub">PDI is {pdi.status}. Approve it first.</p>
           )}
           <button
             type="button"
             className="btn dark"
-            onClick={() => void save(path + "/handover", { withoutPdi })}
+            onClick={() => void save(path + "/handover", { pdiRequired })}
           >
             Send to factory
           </button>

@@ -10,6 +10,8 @@ export type {
   KeyDates,
   StaffDirectory,
   Workspace,
+  Notice,
+  TaskRow,
 } from "@/types/deal";
 export const department = () => location.pathname.split("/")[1] || "design";
 export const stages = [

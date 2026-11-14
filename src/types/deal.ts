@@ -33,7 +33,7 @@ export type Receipt = {
   id: string;
   amount: number;
   reference: string;
-  milestone: "production" | "dispatch";
+  milestone: "production" | "rafter" | "dispatch";
   status: string;
   reason?: string;
 };
@@ -81,6 +81,26 @@ export type Order = {
   drawings?: DrawingVersion[];
   dates?: KeyDates;
   journey?: string;
+  stageInfo?: {
+    key: string;
+    label: string;
+    owner: string;
+    detail: string;
+    step: number;
+    of: number;
+  };
+  task?: {
+    id: string;
+    key: string;
+    title: string;
+    to: string;
+    due?: string | null;
+    by?: string;
+    since?: string;
+  } | null;
+  parentId?: string;
+  area?: string;
+  email?: string;
   gaps?: string[];
   shippingAddress?: string;
   city?: string;
@@ -116,7 +136,39 @@ export type StaffDirectory = {
   }[];
   visitNames: string[];
 };
+export type Notice = {
+  id: string;
+  orderId: string;
+  reference: string;
+  text: string;
+  at: string;
+  column: "work" | "payments";
+  unread: boolean;
+};
+export type TaskRow = {
+  id: string;
+  orderId: string;
+  reference: string;
+  client: string;
+  title: string;
+  to: string;
+  by: string;
+  since: string;
+  due?: string | null;
+  overdue: boolean;
+  report?: {
+    status: "done" | "not_done";
+    note: string;
+    at: string;
+    by: string;
+  } | null;
+  closedAt?: string | null;
+  closedBy?: string | null;
+};
 export type Workspace = {
+  stages?: { key: string; label: string; owner: string }[];
+  notifications?: Notice[];
+  tasks?: { toMe: TaskRow[]; byMe: TaskRow[]; done: TaskRow[] };
   directory?: StaffDirectory;
   revision: number;
   writable: boolean;

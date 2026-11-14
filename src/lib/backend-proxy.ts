@@ -41,6 +41,9 @@ export async function proxy(request: Request, path: string) {
     if (value) headers.set(name, value);
   }
   if (write) headers.set("origin", BACKEND_URL);
+  // Lets the backend build client links on this public address.
+  if (site) headers.set("x-forwarded-host", site);
+  headers.set("x-forwarded-proto", incoming.protocol.replace(":", ""));
   const upstream = await fetch(BACKEND_URL + path + incoming.search, {
     method: request.method,
     headers,

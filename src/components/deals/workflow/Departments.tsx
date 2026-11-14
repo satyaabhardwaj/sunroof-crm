@@ -18,6 +18,7 @@ import {
 import { Dashboard, menus, needs } from "./Dashboard";
 import { PaymentWindow } from "./PaymentWindow";
 import { DesignFlow } from "./DesignFlow";
+import { Inbox } from "./Inbox";
 
 const blank: Workspace = {
   revision: 0,
@@ -53,8 +54,7 @@ export function DepartmentApp() {
     [orderId, setOrderId] = useState<string | null>(null),
     [showTeam, setShowTeam] = useState(false);
   const [focus, setFocus] = useState<Focus>("work"),
-    [itemId, setItemId] = useState(""),
-    [showUpdates, setShowUpdates] = useState(false);
+    [itemId, setItemId] = useState("");
   const working = useRef(false),
     opened = useRef(false),
     generation = useRef(0);
@@ -96,8 +96,8 @@ export function DepartmentApp() {
     return () => clearInterval(timer);
   }, []);
   useEffect(() => {
-    opened.current = !!orderId || showTeam || showUpdates;
-  }, [orderId, showTeam, showUpdates]);
+    opened.current = !!orderId || showTeam;
+  }, [orderId, showTeam]);
   async function save(path: string, body: unknown) {
     if (working.current) return false;
     working.current = true;
@@ -181,10 +181,6 @@ export function DepartmentApp() {
         .includes(search.toLowerCase()),
   );
   const selected = data.orders.find((o) => o.id === orderId);
-  const updates = data.orders
-    .flatMap((o) => o.history.map((h) => ({ ...h, order: o })))
-    .sort((a, b) => b.at.localeCompare(a.at))
-    .slice(0, 30);
   const pending = data.orders.reduce(
     (n, o) =>
       n + (o.receipts || []).filter((r) => r.status === "requested").length,
@@ -213,24 +209,14 @@ export function DepartmentApp() {
           />
         }
         actions={
-          <button
-            type="button"
-            className="btn round bell"
-            aria-label="Notifications"
-            onClick={() => setShowUpdates(true)}
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7 2.5 7h-17S6 15 6 9M10 20a2 2 0 0 0 4 0" />
-            </svg>
-          </button>
+          <Inbox
+            data={data}
+            busy={busy}
+            save={save}
+            openOrder={(o) =>
+              open(o, dept === "accounts" ? "payments" : "work")
+            }
+          />
         }
       />
       <nav
@@ -366,39 +352,6 @@ export function DepartmentApp() {
           )}
         </main>
       </div>
-      {showUpdates && (
-        <Dialog
-          title="Notifications"
-          sub="Latest updates"
-          busy={busy}
-          onClose={() => setShowUpdates(false)}
-        >
-          <div className="rows">
-            {updates.map((h, i) => (
-              <button
-                className="row a-row"
-                key={i}
-                onClick={() => {
-                  setShowUpdates(false);
-                  open(
-                    h.order,
-                    dept === "accounts" || h.text.startsWith("Payment")
-                      ? "payments"
-                      : "work",
-                  );
-                }}
-              >
-                <span className="who">
-                  <b>{h.order.client}</b>
-                  <small>{h.text}</small>
-                </span>
-                <span className="sub">{when(h.at)}</span>
-              </button>
-            ))}
-            {!updates.length && <p className="empty">No updates yet.</p>}
-          </div>
-        </Dialog>
-      )}
       {selected && (
         <Dialog
           title={selected.client}

@@ -4,6 +4,16 @@ All notable changes to the Magppie CRM. Dates are 2026.
 
 ## Unreleased
 
+### Sunrooof: Design Head's rules, tasks, bell and views (14 Nov)
+- Allocation: skill matrix decides who can take an order (each needed skill ≥ 4), then the most room under the monthly revenue target (₹40 lakh default, editable per designer).
+- Measurement: Delhi NCR → Rahul and Amit, Mumbai → Sohail and Anas, other cities → Installation Managers.
+- Task list for everyone (for me, given by me, done; due dates; report done / not done) and a Magppie-style bell (two columns, cross per line, Clear all, no repeats, red count).
+- Work list views: Cards, Table, Kanban, Calendar, Agenda, Status.
+- Tests: 25 in `backend/tests/test_sunroof.py`.
+
+### Sunrooof: full backend workflow (14 Nov)
+Whiteboard stages with owners, automatic designer allocation (skill matrix, punch-in, location, workload), measurement calendar with three daily slots and automatic booking, counted reschedules by Executives and Installation Managers, visit progress (on the way, reached, done), client approval by email link with WhatsApp share links, designer-edited client details, cumulative payment gates from the existing payment plans, PDI-required question on handover with the factory email, QC failure back to production, rafter then console dispatch, notifications, areas under a project, and a read-only Zoho staff sync. See [SUNROOOF-BACKEND-WORKFLOW](docs/SUNROOOF-BACKEND-WORKFLOW.md). Tests: 21 in `backend/tests/test_sunroof.py`; the skill matrix sheet drives allocation. UI redesign comes later.
+
 ### Sunrooof: CRM login instead of Clerk (14 Nov)
 - The Next.js screens now sign in with the CRM's own login (email/password, authenticator, reset, 20-minute idle sign-out). Clerk is removed (`@clerk/nextjs` uninstalled, middleware and Clerk pages deleted).
 - `/api/*` and the login pages go to FastAPI through a same-origin proxy (`src/lib/backend-proxy.ts`); set `CRM_BACKEND_URL`.

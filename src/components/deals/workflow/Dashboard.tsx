@@ -1,3 +1,4 @@
+import { OrderViews } from "./Views";
 import { useState } from "react";
 import type { Order, Workspace } from "./model";
 import { flags } from "./model";
@@ -235,58 +236,69 @@ function WorkList({
           ))}
         </div>
       )}
-      <div className="a-table-scroll">
-        <table className="a-table sun-work-table">
-          <thead>
-            <tr>
-              <th>Client</th>
-              <th>{tab === "all" ? "Stage" : "Next step"}</th>
-              <th>Designer</th>
-              <th>Received</th>
-              <th>Outstanding</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {shown.map((o) => (
-              <tr key={o.id}>
-                <td>
-                  <button
-                    className="sun-client-link"
-                    onClick={() => open(o, focus)}
-                  >
-                    {o.client}
-                  </button>
-                  <small>
-                    {o.location} · {o.reference}
-                  </small>
-                </td>
-                <td>
-                  {tab === "all"
-                    ? stageName[o.stage] || o.stage
-                    : needs(o, dept)}
-                </td>
-                <td>
-                  {data.designers.find((d) => d.id === o.designerId)?.name ||
-                    "To assign"}
-                </td>
-                <td>{money(o.cashFlow?.received)}</td>
-                <td>{balance(o)}</td>
-                <td>
-                  <button
-                    className="sun-row-open"
-                    aria-label={"Open " + o.client}
-                    onClick={() => open(o, focus)}
-                  >
-                    ↗
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {!shown.length && <p className="sun-empty">No work in this stage.</p>}
-      </div>
+      <OrderViews
+        storageKey={dept}
+        data={data}
+        orders={shown}
+        open={open}
+        focus={focus}
+        table={
+          <div className="a-table-scroll">
+            <table className="a-table sun-work-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>{tab === "all" ? "Stage" : "Next step"}</th>
+                  <th>Designer</th>
+                  <th>Received</th>
+                  <th>Outstanding</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {shown.map((o) => (
+                  <tr key={o.id}>
+                    <td>
+                      <button
+                        className="sun-client-link"
+                        onClick={() => open(o, focus)}
+                      >
+                        {o.client}
+                      </button>
+                      <small>
+                        {o.location} · {o.reference}
+                      </small>
+                    </td>
+                    <td>
+                      {tab === "all"
+                        ? stageName[o.stage] || o.stage
+                        : needs(o, dept)}
+                    </td>
+                    <td>
+                      {data.designers.find((d) => d.id === o.designerId)
+                        ?.name || "To assign"}
+                    </td>
+                    <td>{money(o.cashFlow?.received)}</td>
+                    <td>{balance(o)}</td>
+                    <td>
+                      <button
+                        className="sun-row-open"
+                        aria-label={"Open " + o.client}
+                        onClick={() => open(o, focus)}
+                      >
+                        ↗
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {!shown.length && (
+              <p className="sun-empty">No work in this stage.</p>
+            )}
+          </div>
+        }
+      />
     </section>
   );
 }

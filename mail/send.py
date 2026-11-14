@@ -56,3 +56,31 @@ def send(kind, subject, body):
     except (smtplib.SMTPException, OSError) as problem:
         raise Failed("The email could not be sent. %s" % problem)
     return {"sent": True, "to": people, "test": bool(s.get("MAIL_TEST_EMAIL"))}
+
+
+def send_to(to, subject, body):
+    """Send to a named address (a client, or the factory list). Test mode still redirects everything."""
+    s = settings()
+    if not ready():
+        raise NoKey()
+    test = s.get("MAIL_TEST_EMAIL")
+    people = [x.strip() for x in (test or to or "").split(",") if x.strip()]
+    if not people:
+        raise Failed("No email address given.")
+    message = EmailMessage()
+    message["Subject"] = subject
+    message["From"] = s.get("MAIL_FROM") or s["SMTP_USER"]
+    message["To"] = ", ".join(people)
+    message.set_content(body)
+    try:
+        with smtplib.SMTP(s["SMTP_HOST"], int(s.get("SMTP_PORT", "587")), timeout=30) as server:
+            server.starttls(context=ssl.create_default_context())
+            server.login(s["SMTP_USER"], s["SMTP_PASSWORD"])
+            server.send_message(message)
+    except (smtplib.SMTPException, OSError) as problem:
+        raise Failed("The email could not be sent. %s" % problem)
+    return {"sent": True, "to": people, "test": bool(test)}
+
+
+def factory_address():
+    return settings().get("FACTORY_EMAIL", "")
