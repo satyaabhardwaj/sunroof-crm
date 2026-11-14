@@ -69,7 +69,9 @@ export const menus: Record<string, [string, string][]> = {
 };
 export function needs(o: Order, dept: string) {
   if (dept === "design-head")
-    return !o.designerId ? "Assign designer" : stageName[o.stage] || o.stage;
+    return !o.designerId
+      ? "Assign designer"
+      : o.journey || stageName[o.stage] || o.stage;
   if (dept === "factory")
     return o.stage === "handover"
       ? o.factoryAccepted
@@ -87,8 +89,8 @@ export function needs(o: Order, dept: string) {
     return "Review visit";
   if (o.stage === "measurement")
     return activeVisits(o).length ? "Visit booked" : "Book measurement";
-  if (o.stage === "drawings") return "Prepare drawing";
-  return stageName[o.stage] || o.stage;
+  if (o.stage === "drawings") return o.journey || "Prepare drawing";
+  return o.journey || stageName[o.stage] || o.stage;
 }
 function balance(o: Order) {
   const c = o.cashFlow;

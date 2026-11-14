@@ -4,6 +4,26 @@ All notable changes to the Magppie CRM. Dates are 2026.
 
 ## Unreleased
 
+### Sunrooof: CRM login instead of Clerk (14 Nov)
+- The Next.js screens now sign in with the CRM's own login (email/password, authenticator, reset, 20-minute idle sign-out). Clerk is removed (`@clerk/nextjs` uninstalled, middleware and Clerk pages deleted).
+- `/api/*` and the login pages go to FastAPI through a same-origin proxy (`src/lib/backend-proxy.ts`); set `CRM_BACKEND_URL`.
+- The work list's Next step column uses the new journey labels.
+- Checked against the QA backend: redirect to login, workspace loads, a save works, writes from another origin are refused. See [NEXT-FRONTEND](docs/NEXT-FRONTEND.md).
+
+### Sunrooof: design to factory unblocked (14 Nov)
+From the round-robin, designer-stage and codes meetings (13 Nov). Before this, an order stopped at Drawings: nothing handled versions, client approval, dates or Send to factory.
+- **Drawing versions:** the designer uploads a CAD file (DWG/PDF) and a client PDF, then submits V1, V2… One open version at a time; files cannot be reused. V4 and later go to the Design Head first. The designer records "Approved by client" / "Rejected by client" (reason required) after sharing by mail or WhatsApp.
+- **Start design:** a separate click after measurement approval, so client holds and design time are visible.
+- **Key dates:** dispatch needed by, rafter installation, console installation, inauguration.
+- **Send to factory:** needs the client-approved drawing, production dues confirmed by Accounts, a dispatch date, a shipping address, and either an approved PDI or "Send without PDI".
+- **Next step label** on every order (`journey`), using the whiteboard names (Measurement to be assigned … Ready to dispatch).
+- **Missing from Sales** list (`gaps`): shipping address, city, state, phone, and a state that is not Indian (the "Mumbai / Dubai" case).
+- **Reschedules:** counted per visit; the third is flagged to the designer, not blocked.
+- **Measurement sees no money:** cash flow and balances are no longer sent to Measurement.
+- **Error messages:** the screens now show the backend's reason instead of "Request failed with status code 422".
+- One set of order types (`src/types/deal.ts`); `workflow/model.ts` re-exports them.
+- Tests: 4 new in `backend/tests/test_sunroof.py` (10 pass). Typecheck and `npm run build` pass. Not checked in a browser: the Next.js screens need Clerk keys and backend Clerk verification.
+
 ### Local admin for a fresh clone (22 Oct)
 - `python -m backend.local_admin` creates or resets an admin on a laptop's own development database (default `admin@magppie.local`), with a password of at least 8 characters typed at a hidden prompt.
 - It refuses preview, production, Vercel and any database that is not on localhost. No password is stored in the repository.

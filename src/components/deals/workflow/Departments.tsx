@@ -17,6 +17,7 @@ import {
 } from "./common";
 import { Dashboard, menus, needs } from "./Dashboard";
 import { PaymentWindow } from "./PaymentWindow";
+import { DesignFlow } from "./DesignFlow";
 
 const blank: Workspace = {
   revision: 0,
@@ -409,7 +410,11 @@ export function DepartmentApp() {
             selected.squareFeet +
             " sq ft"
           }
-          tag={<Pill>{stageName[selected.stage] || selected.stage}</Pill>}
+          tag={
+            <Pill>
+              {selected.journey || stageName[selected.stage] || selected.stage}
+            </Pill>
+          }
           busy={busy}
           onClose={close}
         >
@@ -511,7 +516,12 @@ export function DepartmentApp() {
                       ],
                       ["Location", selected.location],
                       ["Area", selected.squareFeet + " sq ft"],
-                      ["Stage", stageName[selected.stage] || selected.stage],
+                      [
+                        "Next step",
+                        selected.journey ||
+                          stageName[selected.stage] ||
+                          selected.stage,
+                      ],
                     ]}
                   />
                 </div>
@@ -795,6 +805,16 @@ function OrderActions({
               <button className="btn dark">Assign</button>
             </div>
           </form>
+          {o.stage === "drawings" &&
+            o.drawings?.at(-1)?.status === "awaiting_head" && (
+              <DesignFlow
+                order={o}
+                dept={dept}
+                save={save}
+                upload={upload}
+                Documents={Documents}
+              />
+            )}
         </>
       )}
       {dept === "design" && focus === "work" && (
@@ -904,6 +924,12 @@ function OrderActions({
                 {when(visit.start)}
               </p>
               {visit.reviewNote && <p>{visit.reviewNote}</p>}
+              {visit.flagged && (
+                <p className="a-error">
+                  Rescheduled {visit.reschedules} times. Please check with the
+                  client.
+                </p>
+              )}
               {visit.status === "submitted" && (
                 <>
                   <p>{visit.checklist.join(" · ")}</p>
@@ -926,10 +952,13 @@ function OrderActions({
             </section>
           )}
           {o.stage === "drawings" && (
-            <div className="sub">
-              Measurement approved. Drawing upload and client approval are not
-              connected yet.
-            </div>
+            <DesignFlow
+              order={o}
+              dept={dept}
+              save={save}
+              upload={upload}
+              Documents={Documents}
+            />
           )}
           {!["measurement", "drawings", "assignment"].includes(o.stage) && (
             <p>With Factory · {stageName[o.stage] || o.stage}</p>

@@ -55,6 +55,18 @@ class Receipt(Input):
     date: Date | None = None
     destination: Literal['bank', 'management'] | None = None
     mode: Literal['Bank transfer', 'UPI', 'Cheque', 'Cash', 'Card', 'Other'] | None = None
+class DrawingVersion(Input):
+    cad: str = Field(min_length=1, max_length=80)
+    pdf: str = Field(min_length=1, max_length=80)
+    note: str = Field(default='', max_length=2000)
+class KeyDates(Input):
+    # Captured by Sales first, then confirmed by the designer (meeting B 5:45-6:28).
+    rafterInstallation: Date | None = None
+    consoleInstallation: Date | None = None
+    inauguration: Date | None = None
+    requiredDispatch: Date | None = None
+class Handover(Input):
+    withoutPdi: bool = False
 class FactoryAction(Input):
     action: Literal['accept', 'issue', 'start', 'complete', 'qc_pass', 'qc_fail', 'packed']
     reason: str = Field(default='', max_length=2000)
@@ -68,6 +80,54 @@ def remaining(order, milestone):
     if due is None: return None
     paid = sum(r['amount'] for r in order.get('receipts', []) if r['milestone'] == milestone and r['status'] == 'confirmed')
     return max(0, due - paid)
+
+INDIAN_STATES = {s.casefold() for s in (
+    'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh',
+    'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha',
+    'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
+    'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Jammu and Kashmir',
+    'Ladakh', 'Lakshadweep', 'Puducherry')}
+RESCHEDULE_FLAG = 3  # two reschedules are normal; the third is flagged, never blocked (meeting A 13:02-13:10, 25:38-25:43)
+
+def handoff_gaps(order):
+    """Fields Sales must hand over before post-design can run cleanly (meeting C 0:00-1:53)."""
+    gaps = [label for key, label in (('shippingAddress', 'Shipping address'), ('city', 'City'), ('state', 'State'), ('phone', 'Client phone'))
+            if not str(order.get(key) or '').strip()]
+    state_name, country = str(order.get('state') or '').strip(), str(order.get('country') or 'India').strip()
+    if state_name and country.casefold() == 'india' and state_name.casefold() not in INDIAN_STATES:
+        gaps.append(f'State "{state_name}" is not an Indian state; correct it or set the country')
+    return gaps
+
+def journey(order):
+    """One plain label per order, using the whiteboard stage names. Logical stages stay on the server."""
+    stage, visits = order.get('stage'), order.get('visits', [])
+    if stage == 'assignment': return 'Designer to be assigned'
+    if stage == 'measurement':
+        open_visit = next((v for v in visits if v['kind'] == 'measurement' and v['status'] not in ('rejected', 'approved')), None)
+        if not open_visit: return 'Measurement to be assigned'
+        return 'Measurement awaiting review' if open_visit['status'] == 'submitted' else 'Measurement in progress'
+    if stage == 'drawings':
+        drawings = order.get('drawings', [])
+        if not order.get('clientApproved'):
+            if not order.get('designStartedAt'): return 'Measurement done'
+            last = drawings[-1] if drawings else None
+            if last and last['status'] == 'awaiting_head': return f"V{last['version']} awaiting Design Head"
+            if last and last['status'] == 'ready': return f"V{last['version']} awaiting client approval"
+            return 'Design in progress'
+        if remaining(order, 'production') != 0:
+            requested = any(r['milestone'] == 'production' and r['status'] == 'requested' for r in order.get('receipts', []))
+            return 'Production payment verification' if requested else 'Production payment pending'
+        return 'Ready for factory handover'
+    if stage == 'handover': return 'Factory planning' if order.get('factoryAccepted') else 'Handover to factory'
+    if stage in ('production', 'qc', 'repair', 'reproduce'):
+        return {'production': 'Production started', 'qc': 'QC', 'repair': 'Repair, then QC again', 'reproduce': 'Reproduction, then QC again'}[stage]
+    if stage == 'packing':
+        if not order.get('packedAt'): return 'Ready for packing'
+        if remaining(order, 'dispatch') != 0:
+            requested = any(r['milestone'] == 'dispatch' and r['status'] == 'requested' for r in order.get('receipts', []))
+            return 'Dispatch payment verification' if requested else 'Dispatch payment pending'
+        return 'Ready to dispatch'
+    return 'Cleared for dispatch' if stage == 'cleared' else str(stage)
 
 def cash_summary(order):
     # Safe totals for every department; raw references and receipt notes stay with Design/Accounts.
@@ -121,10 +181,14 @@ def register(app, engine, who, settings=None):
         orders = [deepcopy(o) for o in data['orders'] if scoped(o, user)]
         if dept == 'measurement': orders = [o for o in orders if o.get('visits')]
         if dept == 'factory': orders = [o for o in orders if o.get('stage') in FACTORY_STAGES]
-        # Measurement/factory get order context, not receipt amounts or payment references.
+        # Factory gets totals only; Measurement gets no money at all (meeting A 19:29-19:52).
         for o in orders:
-            o['cashFlow'] = cash_summary(o)
-            o['balances'] = {s: remaining(o, s) for s in ('production', 'dispatch')}
+            o['journey'] = journey(o)
+            o['gaps'] = handoff_gaps(o)
+            for v in o.get('visits', []): v['flagged'] = v.get('reschedules', 0) >= RESCHEDULE_FLAG
+            if dept != 'measurement':
+                o['cashFlow'] = cash_summary(o)
+                o['balances'] = {s: remaining(o, s) for s in ('production', 'dispatch')}
             if dept in ('measurement', 'factory'):
                 o.pop('receipts', None); o.pop('dues', None)
                 o['history'] = [h for h in o.get('history', []) if not h['text'].startswith('Payment')]
@@ -227,7 +291,11 @@ def register(app, engine, who, settings=None):
                 else:
                     start, end = body.start or datetime.fromisoformat(visit['start']), body.end or datetime.fromisoformat(visit['end'])
                     slot(data, visit['workerId'], start, end, visit_id)
+                    moved = body.action == 'reschedule' and (start.isoformat(), end.isoformat()) != (visit['start'], visit['end'])
+                    if moved: visit['reschedules'] = visit.get('reschedules', 0) + 1
                     visit.update(status='confirmed', start=start.isoformat(), end=end.isoformat(), reason=body.reason)
+                    if moved and visit['reschedules'] >= RESCHEDULE_FLAG:
+                        record(order, user, f"Flag: visit rescheduled {visit['reschedules']} times")
             else:
                 if visit['status'] not in ('confirmed', 'corrections'): raise HTTPException(422, 'Confirm the visit before submitting results.')
                 if not body.checklist or any(not x.strip() for x in body.checklist): raise HTTPException(422, 'Complete the measurement checklist.')
@@ -267,6 +335,90 @@ def register(app, engine, who, settings=None):
             record(order, user, 'Payment confirmed by Accounts' if body.approve else 'Payment rejected by Accounts: ' + body.reason)
         return change(request, body.revision, ['accounts'], op, order_id)
 
+    def design_stage(order):
+        if order['stage'] != 'drawings': raise HTTPException(422, 'This order is not in design. Approve the measurement first.')
+
+    @app.post('/api/sunroof/orders/{order_id}/design-start')
+    def design_start(order_id: str, body: Input, request: Request):
+        # Kept apart from "measurement done" so client holds and design time stay visible (meeting B 9:23-9:43).
+        def op(data, user, order, db):
+            design_stage(order)
+            if order.get('designStartedAt'): raise HTTPException(422, 'Design has already started.')
+            order['designStartedAt'] = now(); record(order, user, 'Design started')
+        return change(request, body.revision, ['design', 'design-head'], op, order_id)
+
+    @app.post('/api/sunroof/orders/{order_id}/drawings')
+    def submit_drawing(order_id: str, body: DrawingVersion, request: Request):
+        def op(data, user, order, db):
+            design_stage(order)
+            if order.get('clientApproved'): raise HTTPException(422, 'The client has already approved a version.')
+            drawings = order.setdefault('drawings', [])
+            if drawings and drawings[-1]['status'] in ('awaiting_head', 'ready'): raise HTTPException(422, 'Wait for the decision on the current version first.')
+            docs = {d['id']: d for d in order.get('documents', []) if not d.get('visitId')}
+            used = {x for d in drawings for x in (d['cad'], d['pdf'])}
+            if docs.get(body.cad, {}).get('kind') != 'cad' or docs.get(body.pdf, {}).get('kind') != 'client_pdf' or {body.cad, body.pdf} & used:
+                raise HTTPException(422, 'Upload a new CAD file and a new client PDF for this version.')
+            version = len(drawings) + 1
+            drawings.append({'version': version, 'cad': body.cad, 'pdf': body.pdf, 'note': body.note, 'submittedAt': now(),
+                             'status': 'awaiting_head' if version >= 4 else 'ready'})
+            order.setdefault('designStartedAt', now())
+            record(order, user, f'Drawing V{version} submitted' + (' · needs Design Head approval' if version >= 4 else ''))
+        return change(request, body.revision, ['design', 'design-head'], op, order_id)
+
+    def current_drawing(order, version, status):
+        drawing = next((d for d in order.get('drawings', []) if d['version'] == version), None)
+        if not drawing or drawing['status'] != status or drawing is not order['drawings'][-1]: raise HTTPException(422, 'This version is not awaiting that decision.')
+        return drawing
+
+    @app.post('/api/sunroof/orders/{order_id}/drawings/{version}/head')
+    def head_review(order_id: str, version: int, body: Review, request: Request):
+        # V4 and later go to Shivang before the client sees them (meeting B 3:12-3:18).
+        def op(data, user, order, db):
+            drawing = current_drawing(order, version, 'awaiting_head')
+            if not body.approve and not body.reason: raise HTTPException(422, 'Explain what the designer must change.')
+            drawing.update(status='ready' if body.approve else 'returned', headNote=body.reason, headAt=now())
+            record(order, user, f'Design Head approved V{version}' if body.approve else f'Design Head returned V{version}: {body.reason}')
+        return change(request, body.revision, ['design-head'], op, order_id)
+
+    @app.post('/api/sunroof/orders/{order_id}/drawings/{version}/client')
+    def client_decision(order_id: str, version: int, body: Review, request: Request):
+        # Designer records the client's answer after sharing the link by mail or WhatsApp (meeting B 2:30-3:10).
+        def op(data, user, order, db):
+            drawing = current_drawing(order, version, 'ready')
+            if not body.approve and not body.reason: raise HTTPException(422, "Record the client's reason for rejecting.")
+            drawing.update(status='approved' if body.approve else 'rejected', clientReason=body.reason, decidedAt=now(), decidedBy=user['id'])
+            if body.approve: order['clientApproved'] = True
+            record(order, user, f'Client approved V{version}' if body.approve else f'Client rejected V{version}: {body.reason}')
+        return change(request, body.revision, ['design', 'design-head'], op, order_id)
+
+    @app.post('/api/sunroof/orders/{order_id}/dates')
+    def key_dates(order_id: str, body: KeyDates, request: Request):
+        def op(data, user, order, db):
+            dates = order.setdefault('dates', {})
+            new = body.model_dump(mode='json', exclude={'revision'})
+            changed = [k for k, v in new.items() if dates.get(k) != v]
+            if not changed: raise HTTPException(422, 'No date changed.')
+            dates.update(new)
+            record(order, user, 'Dates updated: ' + ', '.join(f"{k} {new[k] or 'cleared'}" for k in changed))
+        return change(request, body.revision, ['design', 'design-head'], op, order_id)
+
+    @app.post('/api/sunroof/orders/{order_id}/handover')
+    def send_to_factory(order_id: str, body: Handover, request: Request):
+        def op(data, user, order, db):
+            design_stage(order)
+            if not order.get('clientApproved'): raise HTTPException(422, 'The client must approve a drawing version first.')
+            balance = remaining(order, 'production')
+            if balance is None: raise HTTPException(422, 'The production amount due is not recorded yet. Ask Accounts.')
+            if balance > 0: raise HTTPException(422, 'Production payment is not fully confirmed by Accounts yet.')
+            if not order.get('dates', {}).get('requiredDispatch'): raise HTTPException(422, 'Enter the date the client needs dispatch, so the factory can plan.')
+            if not str(order.get('shippingAddress') or '').strip(): raise HTTPException(422, 'Shipping address is missing. Ask Sales to fill it.')
+            pdi = [v for v in order.get('visits', []) if v['kind'] == 'pdi' and v['status'] != 'rejected']
+            if any(v['status'] != 'approved' for v in pdi): raise HTTPException(422, 'A PDI is booked. Approve it before sending to the factory.')
+            if not pdi and not body.withoutPdi: raise HTTPException(422, 'No PDI is booked. Book one, or confirm sending without PDI.')
+            order.update(stage='handover', handedOverAt=now())
+            record(order, user, 'Sent to factory' + (' without PDI' if not pdi else '') + f" · dispatch needed by {order['dates']['requiredDispatch']}")
+        return change(request, body.revision, ['design', 'design-head'], op, order_id)
+
     @app.post('/api/sunroof/orders/{order_id}/factory')
     def factory_action(order_id: str, body: FactoryAction, request: Request):
         def op(data, user, order, db):
@@ -300,21 +452,28 @@ def register(app, engine, who, settings=None):
         return change(request, body.revision, ['factory'], op, order_id)
 
     @app.put('/api/sunroof/orders/{order_id}/documents')
-    async def upload(order_id: str, request: Request, revision: int, kind: Literal['drawing', 'photo'], visitId: str):
+    async def upload(order_id: str, request: Request, revision: int, kind: Literal['drawing', 'photo', 'cad', 'client_pdf'], visitId: str = ''):
         # Local preview storage only; never silently fall back from hosted object storage.
         if settings is None or settings.storage_backend != 'filesystem': raise HTTPException(503, 'Sunroof document storage is not configured for this environment.')
         raw = await request.body()
         mime = request.headers.get('content-type', '').split(';')[0]
         types = {'application/pdf': ('.pdf', raw.startswith(b'%PDF-')), 'image/png': ('.png', raw.startswith(b'\x89PNG\r\n\x1a\n')), 'image/jpeg': ('.jpg', raw.startswith(b'\xff\xd8\xff'))}
-        if mime not in types or not types[mime][1] or not 0 < len(raw) <= 20*1024*1024 or (kind == 'photo' and mime == 'application/pdf'): raise HTTPException(422, 'Use a valid PDF, PNG or JPEG up to 20 MB. Photos must be images.')
+        if kind == 'cad': types = {'application/pdf': types['application/pdf'], 'application/acad': ('.dwg', raw.startswith(b'AC10')), 'image/vnd.dwg': ('.dwg', raw.startswith(b'AC10'))}
+        if kind == 'client_pdf': types = {'application/pdf': types['application/pdf']}
+        if mime not in types or not types[mime][1] or not 0 < len(raw) <= 20*1024*1024 or (kind == 'photo' and mime == 'application/pdf'): raise HTTPException(422, 'Use a valid file up to 20 MB: PDF/PNG/JPEG for visits, DWG or PDF for CAD, PDF for the client copy. Photos must be images.')
         file_id = str(uuid4()); path = settings.uploads / 'sunroof' / (file_id + types[mime][0])
         def op(data, user, order, db):
-            target = next((v for v in order.get('visits', []) if v['id'] == visitId and v['status'] in ('confirmed', 'corrections')), None)
-            if not target or (user['department'] == 'measurement' and target['workerId'] != user['staffId']): raise HTTPException(403, 'No assigned visit is open for submission.')
+            if kind in ('cad', 'client_pdf'):
+                if user['department'] not in ('design', 'design-head', 'admin'): raise HTTPException(403, 'Only Design uploads drawings.')
+                design_stage(order)
+            else:
+                if user['department'] not in ('measurement', 'admin'): raise HTTPException(403, 'Only the visit team uploads visit evidence.')
+                target = next((v for v in order.get('visits', []) if v['id'] == visitId and v['status'] in ('confirmed', 'corrections')), None)
+                if not target or (user['department'] == 'measurement' and target['workerId'] != user['staffId']): raise HTTPException(403, 'No assigned visit is open for submission.')
             path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
             order.setdefault('documents', []).append({'id': file_id, 'visitId': visitId, 'kind': kind, 'filename': path.name, 'mime': mime})
-            record(order, user, 'Uploaded ' + kind)
-        try: return change(request, revision, ['measurement'], op, order_id)
+            record(order, user, 'Uploaded ' + kind.replace('_', ' '))
+        try: return change(request, revision, ['measurement', 'design', 'design-head'], op, order_id)
         except Exception:
             path.unlink(missing_ok=True); raise
 

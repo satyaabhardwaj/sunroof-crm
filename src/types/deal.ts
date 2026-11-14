@@ -13,6 +13,8 @@ export type Visit = {
   status: string;
   reason?: string;
   reviewNote?: string;
+  reschedules?: number;
+  flagged?: boolean;
   checklist: string[];
   documents: string[];
 };
@@ -75,7 +77,32 @@ export type Order = {
   factoryAccepted?: string;
   packedAt?: string;
   clientApproved?: boolean;
+  designStartedAt?: string;
+  drawings?: DrawingVersion[];
+  dates?: KeyDates;
+  journey?: string;
+  gaps?: string[];
+  shippingAddress?: string;
+  city?: string;
+  state?: string;
+  phone?: string;
   history: { at: string; by: string; text: string }[];
+};
+export type DrawingVersion = {
+  version: number;
+  cad: string;
+  pdf: string;
+  note: string;
+  status: "awaiting_head" | "ready" | "approved" | "rejected" | "returned";
+  headNote?: string;
+  clientReason?: string;
+  submittedAt: string;
+};
+export type KeyDates = {
+  rafterInstallation?: string | null;
+  consoleInstallation?: string | null;
+  inauguration?: string | null;
+  requiredDispatch?: string | null;
 };
 export type StaffDirectory = {
   fetchedAt: string;

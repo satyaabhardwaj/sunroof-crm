@@ -126,3 +126,95 @@ def test_cash_flow_totals_for_factory_without_receipt_details(api):
     assert o['cashFlow']['production']['balance']==80000
     assert o['cashFlow']['dispatch']['balance']==50000
     assert post(c,f'orders/fac/receipts/{rid}/review',approve=False,reason='No').status_code==403
+
+
+def drawings_order(api, **extra):
+    client, engine, _ = api
+    c = prepare(api)
+    with engine.begin() as db:
+        payload = db.scalar(select(state.c.payload))
+        o = payload['sunroof']['orders'][0]
+        o.update(stage='drawings', shippingAddress='12 Park Road', city='Gurugram', state='Haryana', phone='9000000000', **extra)
+        db.execute(update(state).values(payload=payload))
+    return c
+
+
+def upload_drawings(c, order='one'):
+    ids = []
+    for kind, content, mime in [('cad', b'AC1032 test', 'application/acad'), ('client_pdf', b'%PDF-1.4\nClient', 'application/pdf')]:
+        r = c.put(f'/api/sunroof/orders/{order}/documents', params={'revision': workspace(c)['revision'], 'kind': kind}, content=content, headers={'Content-Type': mime})
+        assert r.status_code == 200, r.text
+        ids.append(next(o for o in r.json()['orders'] if o['id'] == order)['documents'][-1]['id'])
+    return ids
+
+
+def one(c): return next(o for o in workspace(c)['orders'] if o['id'] == 'one')
+
+
+def test_drawing_versions_client_decision_and_v4_design_head(api):
+    c = drawings_order(api); sign_in(c, 'designer')
+    assert one(c)['journey'] == 'Measurement done'
+    assert post(c, 'orders/one/design-start').status_code == 200
+    assert one(c)['journey'] == 'Design in progress'
+    sign_in(c, 'worker')
+    assert c.put('/api/sunroof/orders/one/documents', params={'revision': workspace(c)['revision'], 'kind': 'cad'}, content=b'AC1032', headers={'Content-Type': 'application/acad'}).status_code in (403, 404)
+    sign_in(c, 'designer')
+    for v in (1, 2, 3):
+        cad, pdf = upload_drawings(c)
+        assert post(c, 'orders/one/drawings', cad=cad, pdf=pdf).status_code == 200
+        assert one(c)['journey'] == f'V{v} awaiting client approval'
+        assert post(c, 'orders/one/drawings', cad=cad, pdf=pdf).status_code == 422  # one open version at a time
+        assert post(c, f'orders/one/drawings/{v}/client', approve=False, reason='').status_code == 422
+        assert post(c, f'orders/one/drawings/{v}/client', approve=False, reason='Change colour').status_code == 200
+    assert post(c, 'orders/one/drawings', cad=cad, pdf=pdf).status_code == 422  # files from an old version cannot be reused
+    cad, pdf = upload_drawings(c)
+    assert post(c, 'orders/one/drawings', cad=cad, pdf=pdf).status_code == 200
+    assert one(c)['journey'] == 'V4 awaiting Design Head'
+    assert post(c, 'orders/one/drawings/4/client', approve=True).status_code == 422
+    assert post(c, 'orders/one/drawings/4/head', approve=True).status_code == 403
+    sign_in(c, 'head'); assert post(c, 'orders/one/drawings/4/head', approve=True).status_code == 200
+    sign_in(c, 'designer'); assert post(c, 'orders/one/drawings/4/client', approve=True).status_code == 200
+    o = one(c); assert o['clientApproved'] and o['journey'] == 'Production payment pending'
+
+
+def test_send_to_factory_gates(api):
+    c = drawings_order(api, clientApproved=True, designStartedAt='2026-11-14T00:00:00+00:00'); sign_in(c, 'designer')
+    assert post(c, 'orders/one/handover').json()['error'].startswith('Production payment')
+    post(c, 'orders/one/receipts', amount=100000, milestone='production', reference='FULL'); rid = one(c)['receipts'][0]['id']
+    assert one(c)['journey'] == 'Production payment verification'
+    sign_in(c, 'accounts'); assert post(c, f'orders/one/receipts/{rid}/review', approve=True).status_code == 200
+    sign_in(c, 'designer'); assert one(c)['journey'] == 'Ready for factory handover'
+    assert 'dispatch' in post(c, 'orders/one/handover').json()['error']
+    assert post(c, 'orders/one/dates', requiredDispatch='2026-12-20', inauguration='2027-01-10').status_code == 200
+    assert post(c, 'orders/one/dates', requiredDispatch='2026-12-20', inauguration='2027-01-10').status_code == 422
+    assert 'PDI' in post(c, 'orders/one/handover').json()['error']
+    r = post(c, 'orders/one/handover', withoutPdi=True); assert r.status_code == 200, r.text
+    o = one(c); assert o['stage'] == 'handover' and o['journey'] == 'Handover to factory'
+    sign_in(c, 'factory'); assert 'one' in {o['id'] for o in workspace(c)['orders']}
+
+
+def test_handover_needs_shipping_address_and_gaps_are_listed(api):
+    c = drawings_order(api, clientApproved=True, dues={'production': 0, 'dispatch': 0}, dates={'requiredDispatch': '2026-12-20'})
+    client, engine, _ = api
+    with engine.begin() as db:
+        payload = db.scalar(select(state.c.payload)); o = payload['sunroof']['orders'][0]
+        o.update(shippingAddress='', city='Mumbai', state='Dubai')
+        db.execute(update(state).values(payload=payload))
+    sign_in(c, 'designer')
+    gaps = one(c)['gaps']
+    assert 'Shipping address' in gaps and any('Dubai' in g for g in gaps)
+    assert 'Shipping address' in post(c, 'orders/one/handover', withoutPdi=True).json()['error']
+
+
+def test_measurement_sees_no_money_and_third_reschedule_is_flagged(api):
+    c = prepare(api); sign_in(c, 'designer')
+    v = next(o for o in post(c, 'orders/one/visits', workerId='w2', **slot()).json()['orders'] if o['id'] == 'one')['visits'][0]
+    sign_in(c, 'im')
+    o = workspace(c)['orders'][0]
+    assert 'cashFlow' not in o and 'balances' not in o and 'dues' not in o
+    for n in (1, 2, 3):
+        start = datetime.now(timezone.utc) + timedelta(days=3 + n)
+        r = post(c, f'orders/one/visits/{v["id"]}', action='reschedule', reason='Client asked', start=start.isoformat(), end=(start + timedelta(hours=2)).isoformat())
+        assert r.status_code == 200, r.text
+        assert r.json()['orders'][0]['visits'][0]['flagged'] is (n >= 3)
+    sign_in(c, 'designer'); assert 'Flag: visit rescheduled 3 times' in one(c)['history'][-2]['text'] or any('Flag' in h['text'] for h in one(c)['history'])

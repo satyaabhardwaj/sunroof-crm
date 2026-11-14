@@ -1,4 +1,4 @@
-> Frontend structure update — 13 November 2026: the active frontend is now the root Next.js `src/` application. Separate `<department>/react` entries have been retired and their SUNROOOF screens migrated to `src/components/deals/workflow`. The prior runtime checks below describe the earlier demo, not verified Clerk/backend integration. See [NEXT-FRONTEND.md](NEXT-FRONTEND.md) for the current setup and limits.
+> Frontend structure update — 13 November 2026: the active frontend is now the root Next.js `src/` application. Separate `<department>/react` entries have been retired and their SUNROOOF screens migrated to `src/components/deals/workflow`. Since 14 November the screens sign in with the CRM's own login through a Next.js proxy. See [NEXT-FRONTEND.md](NEXT-FRONTEND.md) for the current setup and limits.
 
 # Sunrooof CRM build status
 
@@ -59,3 +59,9 @@ Ordinary logins are mapped server-side to departments. Designers see their assig
 - Backend: 61 distinct selected tests now pass across the initial run and focused rechecks. A SQLite logout cascade assumption was corrected with explicit realm-session cleanup; all three role cases and both inactivity tests passed afterward. Existing MFA/policy, departmental and payment tests passed.
 - Browser: new requested password signs in successfully; Phone/Desktop chooser works; phone widths stay within 390px; labelled client payment cards use one column; cash flow is visible across all five departments; directory shows 7 active designers, 10 installation managers, Shivang and Ranjay with source notes. Desktop was checked at 1440px. No browser console errors were reported.
 - Screenshot proofs: `Documents/ChatGPT/satya/artifacts/sunrooof-desktop.jpg` and `sunrooof-phone.jpg`.
+
+## 14 November: design to factory
+
+Built from the 13 November meetings; see CHANGELOG. Designers can now take an order from measurement approval to the factory: start design, drawing versions with the client's decision, V4+ Design Head approval, key dates, and Send to factory with its gates. Orders show a Next step label and a Missing from Sales list. Visits flag the third reschedule. Measurement receives no cash figures.
+
+Still not built: automatic client mail/approval link (needs a mail provider), intelligent allocation (needs the skill ratings sheet and weights), punch-in availability, check-in with photo/location, payment plans, sub-orders/areas and their IDs, dispatch grouping, search by every alias. Sign-in now uses the CRM's own login (Clerk removed); see NEXT-FRONTEND.md.

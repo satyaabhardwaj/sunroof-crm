@@ -1,17 +1,15 @@
 "use client";
 import { useMemo, useCallback } from "react";
-import { useAuth } from "@clerk/nextjs";
 import { useQueryClient } from "@tanstack/react-query";
 import { createApiClient } from "@/lib/api-client";
 import type { Workspace } from "@/types/deal";
 export function useWorkflowApi() {
-  const { getToken, userId, orgId } = useAuth();
   const query = useQueryClient();
-  const client = useMemo(() => createApiClient(getToken), [getToken]);
+  const client = useMemo(() => createApiClient(), []);
   const request = useCallback(
     async (path = "", body?: unknown): Promise<Workspace> => {
       const department = location.pathname.split("/")[1] || "design";
-      const key = ["workspace", userId, orgId, department];
+      const key = ["workspace", department];
       if (body !== undefined) {
         const result = await client.post<Workspace>(
           `/api/sunroof/${path}`,
@@ -33,7 +31,7 @@ export function useWorkflowApi() {
           ).data,
       });
     },
-    [client, query, userId, orgId],
+    [client, query],
   );
   return { client, request };
 }

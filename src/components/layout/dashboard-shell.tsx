@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { SunrooofBrand } from "./SunrooofBrand";
 import { usePathname } from "next/navigation";
-import { UserButton } from "@clerk/nextjs";
 import {
   Menu,
   PencilRuler,
@@ -14,6 +13,7 @@ import {
 } from "lucide-react";
 import { useLayout } from "@/hooks/use-layout";
 import { useRealtime } from "@/hooks/use-realtime";
+import { useIdleSession } from "@/hooks/use-idle-session";
 const navigation = [
   ["design", "Design", PencilRuler],
   ["design-head", "Design head", Users],
@@ -21,17 +21,24 @@ const navigation = [
   ["accounts", "Accounts", Wallet],
   ["factory", "Factory", Factory],
 ] as const;
-export function DashboardShell({ children }: { children: React.ReactNode }) {
+export function DashboardShell({
+  children,
+  email,
+}: {
+  children: React.ReactNode;
+  email: string;
+}) {
   const path = usePathname();
   const { sidebarOpen, setSidebarOpen } = useLayout();
   useRealtime();
+  useIdleSession();
   return (
     <>
       <header className="sticky top-0 z-20 flex h-20 items-center justify-between border-b border-slate-200 bg-white/95 px-5 backdrop-blur">
         <Link
           href="/design"
           className="text-2xl font-black tracking-tight"
-          aria-label="SUNROOOF home"
+          aria-label="Sunrooof home"
         >
           <SunrooofBrand />
         </Link>
@@ -39,7 +46,21 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           <span className="hidden text-sm text-slate-500 sm:block">
             Post-design workspace
           </span>
-          <UserButton />
+          <span className="hidden text-sm text-slate-600 md:block">
+            {email}
+          </span>
+          <button
+            type="button"
+            className="rounded-lg border border-slate-200 px-3 py-2 text-sm"
+            onClick={async () => {
+              await fetch("/api/auth/logout", { method: "POST" }).catch(
+                () => undefined,
+              );
+              location.assign("/login");
+            }}
+          >
+            Sign out
+          </button>
           <button
             className="p-2 md:hidden"
             onClick={() => setSidebarOpen(!sidebarOpen)}

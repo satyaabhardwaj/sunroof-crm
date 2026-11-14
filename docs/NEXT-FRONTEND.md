@@ -1,47 +1,33 @@
-# SUNROOOF frontend
+# Sunrooof frontend
 
-Next.js 15 App Router and TypeScript foundation at the existing CRM repository root. Abhishek’s app/components/hooks/lib/types organization is retained; five departmental routes are additive. Project configuration lives at repository root (the Next.js convention), not inside src.
+Next.js 15 App Router and TypeScript at the repository root (`src/`). Five department routes: `/design`, `/design-head`, `/measurement`, `/accounts`, `/factory`. The FastAPI backend keeps all business rules and permissions.
 
-## Run
+## Sign-in: the CRM's own login (14 November 2026)
+
+Clerk was removed. Sign-in is the existing CRM login: email + password, authenticator codes, password reset, and the 20-minute idle sign-out.
+
+- The browser only talks to the Next.js origin. `src/app/api/[...path]/route.ts` forwards `/api/*` to FastAPI with the `crm_session` cookie (`src/lib/backend-proxy.ts`).
+- `/login`, `/security`, `/forgot-password`, `/reset-password` and `/auth-assets/*` are FastAPI's own pages, served through the same proxy.
+- Writes are accepted only when the request's `Origin` matches the Next.js host; the proxy then sends them on with the backend's origin, which is what FastAPI checks.
+- `src/app/(dashboard)/layout.tsx` asks FastAPI who is signed in. Signed out → `/login`; authenticator setup required → `/security`; backend not running → a notice.
+- `useIdleSession` (same rules as the old `session.js`): only real input renews the session, at most every 30 s; polling never does; tabs share activity.
+- A 401 from any API call goes to `/login?expired=1`.
+
+## Run locally
 
 1. `npm ci`
-2. Copy `.env.example` to `.env.local` and provide your organization’s Clerk keys and API base URL.
-3. `npm run dev` — http://localhost:4303
-4. `npm run typecheck` and `npm run build`
+2. Start the backend (`Start CRM.cmd` on Windows → 4301; on this Mac the QA backend `.local/sunroof-qa/serve.py` → 4302).
+3. `CRM_BACKEND_URL=http://127.0.0.1:4301 npm run dev` (use 4302 for the QA backend), then open http://127.0.0.1:4303/.
+4. `npm run typecheck` and `npm run build`.
 
-Without Clerk keys, the app displays setup information and does not render protected CRM data. Never put secret keys in NEXT_PUBLIC variables.
+Open the site on `127.0.0.1` or `localhost` consistently; the session cookie belongs to the host name you signed in on.
 
-## Implemented here
+## Verification — 14 November 2026
 
-- Clerk login/register UI, protected dashboard layout, Query provider, typed Axios token interceptor.
-- Five department routes, responsive navigation, Zustand navigation state.
-- TanStack Query workspace reads and TanStack Table paginated project table, search and contact history.
-- Optional authenticated Socket.IO invalidation with query polling fallback.
-- Requested libraries installed, shadcn-compatible Button and configuration. Forms, draggable pipeline and remaining shadcn components will be built as workflow mutations are migrated.
+- Typecheck and `npm run build` pass.
+- Against the QA backend on 4302: signed out `/design` redirects to `/login`; the login page and its assets load through the proxy; a wrong password returns the backend's message; a signed-in session loads the Design workspace (8 orders) with no console errors; "Start design" saved through the proxy; writes from another origin or without an origin get 403.
+- Not yet checked: signing in by typing a password in the browser, authenticator (MFA) sign-in, and password reset through the proxy.
 
-## Integration boundary — not a completed migration
+## Hosting
 
-The Python FastAPI backend remains unchanged; the separate React frontend entries are retired by this migration. Its current cookie authentication does not validate Clerk JWTs. Before connecting real data, the backend owner must implement Clerk issuer/audience verification and map user/org identities to existing department permissions. Never trust a department query parameter alone. The client uses GET /api/sunroof/workspace?department=... and expects the Workspace type in src/types/deal.ts. The configured API origin needs appropriate CORS. Socket.IO is optional and requires a real authenticated server emitting workspace:updated; the existing backend does not provide it.
-
-Existing department screens, visit booking, payment submission/review and factory action forms are ported into src/components/deals/workflow, using the existing revision-checked API contracts through authenticated Axios. No new sub-order APIs, drag transitions or client approval links are invented here. Reserved companies/tasks/reports/settings routes explicitly say they are not connected. No fabricated records or successful saves are displayed.
-
-Clerk session policy must be configured separately; the legacy 20-minute inactivity behavior is not yet ported. Contact links retain the originating department; the backend must authorize that department and scope its records. Backend permissions still control access. Outstanding workflow decisions are in SUNROOOF-MEETING-UPDATES-2026-11-13.md.
-
-## References
-
-- https://nextjs.org/docs/15/app
-- https://clerk.com/docs/reference/nextjs/app-router/auth
-- https://clerk.com/docs/reference/nextjs/clerk-middleware
-
-## Hosting and migration
-
-The repository root is the Next.js frontend. Vercel configuration now targets Next.js and automatic Git deployments remain disabled. FastAPI must run as a separate configured API service; the former combined FastAPI/static build is no longer the default deployment. Local backup of retired frontend files is under ignored `.local/frontend-migration-backup/`; committed history also preserves the old implementation.
-
-React Hook Form, Zod and dnd-kit are installed for new forms and the agreed pipeline work. Ported business forms retain their existing validation during this structural migration; this is not a claim that every form has been rewritten with React Hook Form. Existing static HTML assets are legacy compatibility files, not Next.js entry points.
-
-## Verification — 13 November 2026
-
-- `npm run typecheck`: passed for the new src tree.
-- `npm run build`: passed on Next.js 15.5.29; all five department routes generated.
-- Production startup on 127.0.0.1:4303: passed. Login, Design, Measurement, Accounts and Factory correctly show the setup screen without Clerk keys; protected CRM data is not rendered.
-- Signed-in browser workflows and backend mutations remain unverified until Clerk keys and backend token verification are configured.
+Run FastAPI as its own service and set `CRM_BACKEND_URL` on the Next.js server; the browser never needs the backend address. No cloud deployment is authorized without the owner's explicit approval.
